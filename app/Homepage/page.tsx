@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import ProductCarousel from '@/components/ProductCarousel';
 
 type Product = {
     id: number;
@@ -10,6 +11,8 @@ type Product = {
     details: string;
     ingredients: string;
     allergens: string;
+    image: string;
+    bgColor: string;
 };
 
 export default function Homepage() {
@@ -23,7 +26,9 @@ export default function Homepage() {
             shortDesc: "85% pure dark chocolate",
             details: "Rich, intense flavor with notes of cherry and tobacco. Sourced directly from sustainable farms in Ecuador.",
             ingredients: "Organic cacao beans, organic cane sugar, organic cocoa butter",
-            allergens: "May contain traces of nuts"
+            allergens: "May contain traces of nuts",
+            image: "/assets/products/almond.png",
+            bgColor: "#A9D2E5" // Light Blue
         },
         { 
             id: 2,
@@ -32,7 +37,9 @@ export default function Homepage() {
             shortDesc: "Creamy milk chocolate perfection",
             details: "Smooth and creamy with the perfect balance of cacao and milk. Made with ethically sourced ingredients.",
             ingredients: "Organic cacao beans, organic milk powder, organic cane sugar, organic cocoa butter",
-            allergens: "Contains milk. May contain traces of nuts"
+            allergens: "Contains milk. May contain traces of nuts",
+            image: "/assets/products/cashew.png",
+            bgColor: "#C8A284" // Light Brown
         },
         { 
             id: 3,
@@ -41,7 +48,9 @@ export default function Homepage() {
             shortDesc: "Smooth white chocolate luxury",
             details: "Luxuriously smooth white chocolate infused with real Madagascar vanilla beans.",
             ingredients: "Organic cocoa butter, organic milk powder, organic cane sugar, Madagascar vanilla",
-            allergens: "Contains milk. May contain traces of nuts"
+            allergens: "Contains milk. May contain traces of nuts",
+            image: "/assets/products/darkc.png",
+            bgColor: "#FDF0D5" // Cream
         },
         { 
             id: 4,
@@ -50,7 +59,9 @@ export default function Homepage() {
             shortDesc: "Dark chocolate with roasted hazelnuts",
             details: "70% dark chocolate combined with perfectly roasted Italian hazelnuts for a satisfying crunch.",
             ingredients: "Organic cacao beans, organic hazelnuts, organic cane sugar, organic cocoa butter",
-            allergens: "Contains nuts. May contain traces of milk"
+            allergens: "Contains nuts. May contain traces of milk",
+            image: "/assets/products/matcha.png",
+            bgColor: "#D67F4A" // Terracotta
         },
         { 
             id: 5,
@@ -59,7 +70,9 @@ export default function Homepage() {
             shortDesc: "Sweet meets salty perfection",
             details: "Creamy milk chocolate with a flowing salted caramel center, finished with Himalayan pink salt.",
             ingredients: "Organic cacao beans, organic milk powder, organic caramel, Himalayan salt, organic cane sugar",
-            allergens: "Contains milk. May contain traces of nuts"
+            allergens: "Contains milk. May contain traces of nuts",
+            image: "/assets/products/oreo.png",
+            bgColor: "#F9E477" // Yellow
         },
         { 
             id: 6,
@@ -68,25 +81,9 @@ export default function Homepage() {
             shortDesc: "Dark chocolate with citrus notes",
             details: "70% dark chocolate enhanced with natural orange essential oils for a bright, citrusy finish.",
             ingredients: "Organic cacao beans, organic cane sugar, organic cocoa butter, natural orange oil",
-            allergens: "May contain traces of nuts and milk"
-        },
-        { 
-            id: 7,
-            name: "Raspberry Burst", 
-            description: "White chocolate with freeze-dried raspberries",
-            shortDesc: "Fruity white chocolate delight",
-            details: "Creamy white chocolate studded with tangy freeze-dried raspberries for a perfect balance.",
-            ingredients: "Organic cocoa butter, organic milk powder, freeze-dried raspberries, organic cane sugar",
-            allergens: "Contains milk. May contain traces of nuts"
-        },
-        { 
-            id: 8,
-            name: "Espresso Bean", 
-            description: "Dark chocolate with roasted coffee beans",
-            shortDesc: "Coffee lovers' dream",
-            details: "Rich 75% dark chocolate combined with premium roasted espresso beans for an energy boost.",
-            ingredients: "Organic cacao beans, roasted coffee beans, organic cane sugar, organic cocoa butter",
-            allergens: "Contains caffeine. May contain traces of nuts and milk"
+            allergens: "May contain traces of nuts and milk",
+            image: "/assets/products/salted.png",
+            bgColor: "#8DBA6A" // Green
         }
     ];
 
@@ -95,7 +92,7 @@ export default function Homepage() {
             {/* Hero Section */}
             <section className="relative h-screen flex items-center justify-center" style={{background: '#f5f5f5'}}>
                 <div className="text-center px-4 max-w-4xl mx-auto">
-                    <h1 className="text-6xl md:text-8xl font-bold mb-6 tracking-tight font-chewy" style={{color: '#065598'}}>
+                    <h1 className="text-6xl md:text-8xl font-bold mb-6 tracking-tight font-serif" style={{color: '#065598'}}>
                         Pure Chocolate
                     </h1>
                     <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto leading-relaxed" style={{color: '#065598'}}>
@@ -160,66 +157,11 @@ export default function Homepage() {
             </section>
 
             {/* Product Carousel */}
-            <section className="py-20 overflow-hidden" style={{background: 'linear-gradient(to bottom, #FFDE6A, #F5D554)'}}>
-                <div className="max-w-7xl mx-auto px-4 mb-16">
-                    <div className="text-center">
-                        <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{color: '#065598'}}>
-                            Our Signature Collection
-                        </h2>
-                        <p className="text-lg text-gray-600">
-                            Discover our range of premium chocolate bars
-                        </p>
-                    </div>
-                </div>
-
-                {/* First Row - Moving Right */}
-                <div className="relative mb-8">
-                    <div className="flex animate-scroll-right space-x-6">
-                        {[...products, ...products].map((product, index) => (
-                            <div 
-                                key={`row1-${index}`}
-                                onClick={() => setSelectedProduct(product)}
-                                className="flex-shrink-0 w-80 bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer hover:scale-105"
-                            >
-                                <div className="h-48 rounded-xl mb-4 flex items-center justify-center" style={{background: 'linear-gradient(to bottom right, #D67F4A, #C3170E)'}}>
-                                    <span className="text-4xl">🍫</span>
-                                </div>
-                                <h3 className="text-xl font-bold mb-2" style={{color: '#065598'}}>{product.name}</h3>
-                                <p className="text-gray-600 text-sm">{product.shortDesc}</p>
-                                <div className="mt-4 text-sm font-medium" style={{color: '#065598'}}>
-                                    Click to learn more →
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-
-                {/* Second Row - Moving Left */}
-                <div className="relative">
-                    <div className="flex animate-scroll-left space-x-6">
-                        {[...products.slice().reverse(), ...products.slice().reverse()].map((product, index) => (
-                            <div 
-                                key={`row2-${index}`}
-                                onClick={() => setSelectedProduct(product)}
-                                className="flex-shrink-0 w-80 bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer hover:scale-105"
-                            >
-                                <div className="h-48 rounded-xl mb-4 flex items-center justify-center" style={{background: 'linear-gradient(to bottom right, #D67F4A, #C3170E)'}}>
-                                    <span className="text-4xl">🍫</span>
-                                </div>
-                                <h3 className="text-xl font-bold mb-2" style={{color: '#065598'}}>{product.name}</h3>
-                                <p className="text-gray-600 text-sm">{product.shortDesc}</p>
-                                <div className="mt-4 text-sm font-medium" style={{color: '#065598'}}>
-                                    Click to learn more →
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+            <ProductCarousel products={products} onProductClick={setSelectedProduct} />
 
             {/* Product Detail Modal */}
             {selectedProduct && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+                <div className="fixed inset-0 bg-black/30 bg-opacity-50 z-50 flex items-center justify-center p-4">
                     <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
                         <div className="p-8">
                             <div className="flex justify-between items-start mb-6">
@@ -232,8 +174,12 @@ export default function Homepage() {
                                 </button>
                             </div>
                             
-                            <div className="h-64 rounded-xl mb-6 flex items-center justify-center" style={{background: 'linear-gradient(to bottom right, #D67F4A, #C3170E)'}}>
-                                <span className="text-6xl">🍫</span>
+                            <div className="h-64 w-full rounded-xl mb-6 overflow-hidden flex items-center justify-center bg-gray-100">
+                                <img
+                                    src={selectedProduct.image}
+                                    alt={selectedProduct.name}
+                                    className="h-full w-auto object-contain"
+                                />
                             </div>
                             
                             <div className="space-y-6">
@@ -275,7 +221,7 @@ export default function Homepage() {
             {/* CTA Section */}
             <section className="py-20 text-white" style={{backgroundColor: '#065598'}}>
                 <div className="max-w-4xl mx-auto text-center px-4">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-6 ">
                         Ready to Experience Pure Chocolate?
                     </h2>
                     <p className="text-xl mb-8 opacity-90">
