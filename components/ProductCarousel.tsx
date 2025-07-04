@@ -32,11 +32,12 @@ export default function ProductCarousel({ products, onProductClick }: ProductCar
                 </div>
             </div>
 
-            <div className="relative">
+            <div className="relative"></div>
                 <div className="flex animate-scroll-right space-x-8">
                     {[...products, ...products].map((product, index) => (
                         <ProductCard
                             key={`carousel-${product.id}-${index}`}
+                            id={product.id}
                             name={product.name}
                             imageUrl={product.image}
                             bgColor={product.bgColor}
@@ -44,7 +45,6 @@ export default function ProductCarousel({ products, onProductClick }: ProductCar
                         />
                     ))}
                 </div>
-            </div>
-        </section>
+\        </section>
     );
 }

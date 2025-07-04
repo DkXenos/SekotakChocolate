@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import ProductCarousel from '@/components/ProductCarousel';
+import Image from 'next/image';
 
 type Product = {
     id: number;
@@ -21,51 +22,51 @@ export default function Homepage() {
     const products: Product[] = [
         { 
             id: 1,
-            name: "Dark Elegance", 
-            description: "85% pure dark chocolate crafted from single-origin Ecuador cacao beans",
-            shortDesc: "85% pure dark chocolate",
-            details: "Rich, intense flavor with notes of cherry and tobacco. Sourced directly from sustainable farms in Ecuador.",
-            ingredients: "Organic cacao beans, organic cane sugar, organic cocoa butter",
-            allergens: "May contain traces of nuts",
-            image: "/assets/products/almond.png",
-            bgColor: "#A9D2E5" // Light Blue
+            name: "Matcha", 
+            description: "Oat milk infused with authentic Japanese matcha.",
+            shortDesc: "Rich and earthy matcha oat milk",
+            details: "A creamy blend of our signature oat milk and high-quality matcha for a smooth, earthy flavor with a hint of sweetness.",
+            ingredients: "Oat base (water, oats), cane sugar, matcha tea powder, dipotassium phosphate, calcium carbonate, gellan gum",
+            allergens: "Contains oats.",
+            image: "/assets/products/matcha.png",
+            bgColor: "#8DBA6A" // Green
         },
         { 
             id: 2,
-            name: "Milk Delight", 
-            description: "Creamy milk chocolate made with 42% cacao and fresh Alpine milk",
-            shortDesc: "Creamy milk chocolate perfection",
-            details: "Smooth and creamy with the perfect balance of cacao and milk. Made with ethically sourced ingredients.",
-            ingredients: "Organic cacao beans, organic milk powder, organic cane sugar, organic cocoa butter",
-            allergens: "Contains milk. May contain traces of nuts",
+            name: "Cashew", 
+            description: "Chocolate-flavored oat milk packed with plant-based protein.",
+            shortDesc: "Chocolate oat milk with a protein boost",
+            details: "The classic taste of chocolate oat milk, now with an added 20g of plant-based protein to fuel your day.",
+            ingredients: "Oat base (water, oats), pea protein, cane sugar, cocoa powder, dipotassium phosphate, calcium carbonate, gellan gum",
+            allergens: "Contains oats.",
             image: "/assets/products/cashew.png",
             bgColor: "#C8A284" // Light Brown
         },
         { 
             id: 3,
-            name: "White Bliss", 
-            description: "Premium white chocolate made with Madagascar vanilla and cocoa butter",
-            shortDesc: "Smooth white chocolate luxury",
-            details: "Luxuriously smooth white chocolate infused with real Madagascar vanilla beans.",
-            ingredients: "Organic cocoa butter, organic milk powder, organic cane sugar, Madagascar vanilla",
-            allergens: "Contains milk. May contain traces of nuts",
-            image: "/assets/products/darkc.png",
-            bgColor: "#FDF0D5" // Cream
+            name: "Almond", 
+            description: "Vanilla-flavored oat milk with a high-protein formula.",
+            shortDesc: "Vanilla oat milk with added protein",
+            details: "Smooth and creamy vanilla oat milk enriched with 20g of plant-based protein for a delicious and nutritious drink.",
+            ingredients: "Oat base (water, oats), pea protein, cane sugar, natural vanilla flavor, dipotassium phosphate, calcium carbonate, gellan gum",
+            allergens: "Contains oats.",
+            image: "/assets/products/almond.png",
+            bgColor: "#A9D2E5" // Light Blue
         },
         { 
             id: 4,
-            name: "Hazelnut Crunch", 
-            description: "Dark chocolate with hand-roasted Italian hazelnuts",
-            shortDesc: "Dark chocolate with roasted hazelnuts",
-            details: "70% dark chocolate combined with perfectly roasted Italian hazelnuts for a satisfying crunch.",
-            ingredients: "Organic cacao beans, organic hazelnuts, organic cane sugar, organic cocoa butter",
-            allergens: "Contains nuts. May contain traces of milk",
-            image: "/assets/products/matcha.png",
-            bgColor: "#D67F4A" // Terracotta
+            name: "Dark Chocolate", 
+            description: "Rich and creamy chocolate oat milk, a timeless classic.",
+            shortDesc: "Classic rich chocolate oat milk",
+            details: "Our signature oat milk blended with premium cocoa for a rich, indulgent, and dairy-free chocolate experience.",
+            ingredients: "Oat base (water, oats), cane sugar, cocoa powder, sea salt, dipotassium phosphate, calcium carbonate, gellan gum",
+            allergens: "Contains oats.",
+            image: "/assets/products/darkc.png",
+            bgColor: "#C8A284" // Light Brown
         },
         { 
             id: 5,
-            name: "Sea Salt Caramel", 
+            name: "Oreo", 
             description: "Milk chocolate filled with salted caramel and Himalayan pink salt",
             shortDesc: "Sweet meets salty perfection",
             details: "Creamy milk chocolate with a flowing salted caramel center, finished with Himalayan pink salt.",
@@ -76,7 +77,7 @@ export default function Homepage() {
         },
         { 
             id: 6,
-            name: "Orange Zest", 
+            name: "Salted Caramel", 
             description: "Dark chocolate infused with natural orange essential oils",
             shortDesc: "Dark chocolate with citrus notes",
             details: "70% dark chocolate enhanced with natural orange essential oils for a bright, citrusy finish.",
@@ -91,7 +92,36 @@ export default function Homepage() {
         <div className="min-h-screen bg-white">
             {/* Hero Section */}
             <section className="relative h-screen flex items-center justify-center" style={{background: '#f5f5f5'}}>
-                <div className="text-center px-4 max-w-4xl mx-auto">
+                {/* Decorative Images Container */}
+                <div className="absolute inset-0 overflow-hidden z-0">
+                    {/* Template for images - add as many as you need */}
+                    <div className="absolute top-[15vh] left-[10vw] w-32 h-32">
+                        <Image src="/assets/nuts/Almond1.png" alt="Decorative Almond" layout="fill" objectFit="contain" className="opacity-100" />
+                    </div>
+                    <div className="absolute top-[25vh] right-[12vw] w-48 h-48">
+                        <Image src="/assets/nuts/Almond2.png" alt="Decorative Almond" layout="fill" objectFit="contain" className="opacity-100" />
+                    </div>
+                    <div className="absolute bottom-[20vh] left-[18vw] w-40 h-40">
+                        <Image src="/assets/nuts/Almond3.png" alt="Decorative Almond" layout="fill" objectFit="contain" className="opacity-100" />
+                    </div>
+                    <div className="absolute bottom-[30vh] right-[25vw] w-28 h-28">
+                        <Image src="/assets/nuts/Cashew1.png" alt="Decorative Cashew" layout="fill" objectFit="contain" className="opacity-100" />
+                    </div>
+                    <div className="absolute top-[50vh] left-[5vw] w-36 h-36">
+                        <Image src="/assets/nuts/Cashew2.png" alt="Decorative Cashew" layout="fill" objectFit="contain" className="opacity-100" />
+                    </div>
+                    <div className="absolute top-[60vh] right-[8vw] w-44 h-44">
+                        <Image src="/assets/nuts/Cashew3.png" alt="Decorative Cashew" layout="fill" objectFit="contain" className="opacity-100" />
+                    </div>
+                    <div className="absolute bottom-[5vh] left-[30vw] w-24 h-24">
+                        <Image src="/assets/nuts/Almond3.png" alt="Decorative Almond" layout="fill" objectFit="contain" className="opacity-100" />
+                    </div>
+                    <div className="absolute top-[5vh] right-[35vw] w-32 h-32">
+                        <Image src="/assets/nuts/Cashew1.png" alt="Decorative Cashew" layout="fill" objectFit="contain" className="opacity-100" />
+                    </div>
+                </div>
+
+                <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
                     <h1 className="text-6xl md:text-8xl font-bold mb-6 tracking-tight font-serif" style={{color: '#065598'}}>
                         Pure Chocolate
                     </h1>
@@ -124,8 +154,14 @@ export default function Homepage() {
                     
                     <div className="grid md:grid-cols-3 gap-8">
                         <div className="text-center p-8 rounded-2xl hover:shadow-lg transition-shadow duration-300" style={{background: 'linear-gradient(to bottom, #FFDE6A, #F5D554)'}}>
-                            <div className="w-16 h-16 rounded-full mx-auto mb-6 flex items-center justify-center" style={{backgroundColor: '#065598'}}>
-                                <span className="text-white text-2xl">🌱</span>
+                            <div className="w-24 h-24 rounded-full mx-auto mb-6 flex items-center justify-center" style={{backgroundColor: '#065598'}}>
+                                <span className="text-white text-2xl">
+                                    <Image src="/assets/section/Bocil.png" 
+                                    alt="Sustainable Sourcing" 
+                                    width={100} height={100} 
+                                    className='w-full h-auto'
+                                    />
+                                </span>
                             </div>
                             <h3 className="text-xl font-bold mb-4" style={{color: '#065598'}}>Sustainable Sourcing</h3>
                             <p className="text-gray-600">
@@ -133,9 +169,15 @@ export default function Homepage() {
                             </p>
                         </div>
                         
-                        <div className="text-center p-8 rounded-2xl hover:shadow-lg transition-shadow duration-300" style={{background: 'linear-gradient(to bottom, #FFDE6A, #F5D554)'}}>
-                            <div className="w-16 h-16 rounded-full mx-auto mb-6 flex items-center justify-center" style={{backgroundColor: '#065598'}}>
-                                <span className="text-white text-2xl">🏆</span>
+                        <div className="text-center p-8 rounded-2xl hover:shadow-lg transition-shadow duration-full0" style={{background: 'linear-gradient(to bottom, #FFDE6A, #F5D554)'}}>
+                            <div className="w-24 h-24 rounded-full mx-auto mb-6 flex items-center justify-center" style={{backgroundColor: '#065598'}}>
+                                <span className="text-white text-2xl">
+                                     <Image src="/assets/section/Kucing.png" 
+                                    alt="Sustainable Sourcing" 
+                                    width={100} height={100} 
+                                    className='w-full h-auto'
+                                    />
+                                </span>
                             </div>
                             <h3 className="text-xl font-bold mb-4" style={{color: '#065598'}}>Premium Quality</h3>
                             <p className="text-gray-600">
@@ -144,8 +186,14 @@ export default function Homepage() {
                         </div>
                         
                         <div className="text-center p-8 rounded-2xl hover:shadow-lg transition-shadow duration-300" style={{background: 'linear-gradient(to bottom, #FFDE6A, #F5D554)'}}>
-                            <div className="w-16 h-16 rounded-full mx-auto mb-6 flex items-center justify-center" style={{backgroundColor: '#065598'}}>
-                                <span className="text-white text-2xl">❤️</span>
+                            <div className="w-24 h-24 rounded-full mx-auto mb-6 flex items-center justify-center" style={{backgroundColor: '#065598'}}>
+                                <span className="text-white text-2xl">
+                                     <Image src="/assets/section/Cocoa.png" 
+                                    alt="Sustainable Sourcing" 
+                                    width={100} height={100} 
+                                    className='w-30 h-auto'
+                                    />
+                                </span>
                             </div>
                             <h3 className="text-xl font-bold mb-4" style={{color: '#065598'}}>Made with Love</h3>
                             <p className="text-gray-600">
