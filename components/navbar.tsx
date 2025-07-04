@@ -1,5 +1,4 @@
 'use client';
-import Image from 'next/image';
 
 import { useState, useEffect, useRef } from 'react';
 import { useGSAP } from '@gsap/react';
@@ -9,6 +8,7 @@ export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const menuRef = useRef<HTMLDivElement>(null);
     const iconRef = useRef<SVGSVGElement>(null);
+    const menuOverlayRef = useRef<HTMLDivElement>(null);
     const timeline = useRef<gsap.core.Timeline | null>(null);
 
     useEffect(() => {
@@ -25,6 +25,9 @@ export default function Navbar() {
     }, [menuRef]);
 
     useGSAP(() => {
+        gsap.set(menuOverlayRef.current, { yPercent: -100 });
+        gsap.set('.menu-item', { y: 30 });
+
         const top = iconRef.current?.querySelector('.top-line');
         const middle = iconRef.current?.querySelector('.middle-line');
         const bottom = iconRef.current?.querySelector('.bottom-line');
@@ -34,17 +37,21 @@ export default function Navbar() {
         gsap.set([top, middle, bottom], { transformOrigin: "50% 50%" });
 
         timeline.current = gsap.timeline({ paused: true })
-            .to(top, { y: 6, rotation: 45, duration: 0.3 })
+            .to(menuOverlayRef.current, { yPercent: 0, duration: 0.3, ease: 'power3.inOut' })
+            .to(top, { y: 6, rotation: 45, duration: 0.3 }, "<")
             .to(middle, { opacity: 0, duration: 0.3 }, "<")
-            .to(bottom, { y: -6, rotation: -45, duration: 0.3 }, "<");
+            .to(bottom, { y: -6, rotation: -45, duration: 0.3 }, "<")
+            .to('.menu-item', { y: 0, stagger: 0.05, ease: 'power3.out' }, "-=0.2");
 
-    }, { scope: iconRef });
+    }, { scope: menuOverlayRef });
 
     useEffect(() => {
         if (isMenuOpen) {
-            timeline.current?.play();
+            timeline.current?.timeScale(1).play();
+            document.body.style.overflow = 'hidden';
         } else {
-            timeline.current?.reverse();
+            timeline.current?.timeScale(1.5).reverse();
+            document.body.style.overflow = 'auto';
         }
     }, [isMenuOpen]);
 
@@ -58,7 +65,7 @@ export default function Navbar() {
                             <div className="relative" ref={menuRef}>
                                 <button
                                     onClick={() => setIsMenuOpen(!isMenuOpen)}
-                                    className="w-12 h-12 flex items-center justify-center rounded-lg transition-all duration-300 hover:scale-110 text-2xl font-bold"
+                                    className="w-12 h-12 flex items-center justify-center rounded-lg transition-all duration-300 hover:scale-110 text-2xl font-bold z-50"
                                     style={{backgroundColor: '#065598', color: '#C3170E'}}
                                     aria-label="Toggle menu"
                                 >
@@ -68,49 +75,6 @@ export default function Navbar() {
                                         <line className="bottom-line" x1="3" y1="18" x2="21" y2="18"></line>
                                     </svg>
                                 </button>
-
-                            {/* Dropdown Menu */}
-                            {isMenuOpen && (
-                                <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-3xl shadow-xl border-2 overflow-hidden" 
-                                     style={{borderColor: '#FFDE6A'}}>
-                                    <div className="p-6 space-y-3">
-                                        <a href="#" className="block w-full text-center px-6 py-3 text-sm font-semibold rounded-full transition-all duration-300 hover:scale-105" 
-                                           style={{color: '#065598', backgroundColor: '#FFDE6A'}}>
-                                            Home
-                                        </a>
-                                        <a href="#" className="block w-full text-center px-6 py-3 text-sm font-semibold rounded-full transition-all duration-300 hover:scale-105 border-2" 
-                                           style={{color: '#065598', borderColor: '#065598'}}
-                                           onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#065598'; e.currentTarget.style.color = 'white'; }}
-                                           onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#065598'; }}>
-                                            Our Chocolate
-                                        </a>
-                                        <a href="#" className="block w-full text-center px-6 py-3 text-sm font-semibold rounded-full transition-all duration-300 hover:scale-105 border-2" 
-                                           style={{color: '#065598', borderColor: '#065598'}}
-                                           onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#065598'; e.currentTarget.style.color = 'white'; }}
-                                           onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#065598'; }}>
-                                            Our Story
-                                        </a>
-                                        <a href="#" className="block w-full text-center px-6 py-3 text-sm font-semibold rounded-full transition-all duration-300 hover:scale-105 border-2" 
-                                           style={{color: '#065598', borderColor: '#065598'}}
-                                           onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#065598'; e.currentTarget.style.color = 'white'; }}
-                                           onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#065598'; }}>
-                                            Sustainability
-                                        </a>
-                                        <a href="#" className="block w-full text-center px-6 py-3 text-sm font-semibold rounded-full transition-all duration-300 hover:scale-105 border-2" 
-                                           style={{color: '#065598', borderColor: '#065598'}}
-                                           onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#065598'; e.currentTarget.style.color = 'white'; }}
-                                           onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#065598'; }}>
-                                            Contact Us
-                                        </a>
-                                        <a href="#" className="block w-full text-center px-6 py-3 text-sm font-semibold rounded-full transition-all duration-300 hover:scale-105 border-2" 
-                                           style={{color: '#065598', borderColor: '#065598'}}
-                                           onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#065598'; e.currentTarget.style.color = 'white'; }}
-                                           onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#065598'; }}>
-                                            FAQ
-                                        </a>
-                                    </div>
-                                </div>
-                            )}
                             </div>
                         </div>
 
@@ -131,6 +95,17 @@ export default function Navbar() {
                     </div>
                 </div>
             </nav>
+            {/* Dropdown Menu */}
+            <div ref={menuOverlayRef} className="fixed inset-0 bg-white flex flex-col items-center justify-start pt-12 z-40" style={{top: '5rem'}}>
+                <div className="text-center space-y-6">
+                    <a href="#" className="menu-item block text-4xl font-serif text-gray-800 hover:text-[#065598] transition-colors duration-300">Home</a>
+                    <a href="#" className="menu-item block text-4xl font-serif text-gray-800 hover:text-[#065598] transition-colors duration-300">Our Chocolate</a>
+                    <a href="#" className="menu-item block text-4xl font-serif text-gray-800 hover:text-[#065598] transition-colors duration-300">Our Story</a>
+                    <a href="#" className="menu-item block text-4xl font-serif text-gray-800 hover:text-[#065598] transition-colors duration-300">Sustainability</a>
+                    <a href="#" className="menu-item block text-4xl font-serif text-gray-800 hover:text-[#065598] transition-colors duration-300">Contact Us</a>
+                    <a href="#" className="menu-item block text-4xl font-serif text-gray-800 hover:text-[#065598] transition-colors duration-300">FAQ</a>
+                </div>
+            </div>
         </>
     );
 }

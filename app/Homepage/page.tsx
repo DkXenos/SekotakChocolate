@@ -95,43 +95,56 @@ export default function Homepage() {
                 {/* Decorative Images Container */}
                 <div className="absolute inset-0 overflow-hidden z-0">
                     {/* Template for images - add as many as you need */}
-                    <div className="absolute top-[15vh] left-[10vw] w-32 h-32">
-                        <Image src="/assets/nuts/Almond1.png" alt="Decorative Almond" layout="fill" objectFit="contain" className="opacity-100" />
+                    <div className="absolute top-[10vh] left-[5vw] w-32 h-32">
+                        <Image src="/assets/nuts/Almond1.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="absolute top-[25vh] right-[12vw] w-48 h-48">
-                        <Image src="/assets/nuts/Almond2.png" alt="Decorative Almond" layout="fill" objectFit="contain" className="opacity-100" />
+                    <div className="absolute top-[20vh] right-[8vw] w-48 h-48">
+                        <Image src="/assets/nuts/Almond2.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="absolute bottom-[20vh] left-[18vw] w-40 h-40">
-                        <Image src="/assets/nuts/Almond3.png" alt="Decorative Almond" layout="fill" objectFit="contain" className="opacity-100" />
+                    <div className="absolute bottom-[15vh] left-[15vw] w-40 h-40">
+                        <Image src="/assets/nuts/Almond3.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="absolute bottom-[30vh] right-[25vw] w-28 h-28">
-                        <Image src="/assets/nuts/Cashew1.png" alt="Decorative Cashew" layout="fill" objectFit="contain" className="opacity-100" />
+                    <div className="absolute bottom-[25vh] right-[20vw] w-28 h-28">
+                        <Image src="/assets/nuts/Cashew1.png" alt="Decorative Cashew" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="absolute top-[50vh] left-[5vw] w-36 h-36">
-                        <Image src="/assets/nuts/Cashew2.png" alt="Decorative Cashew" layout="fill" objectFit="contain" className="opacity-100" />
+                    <div className="absolute top-[45vh] left-[2vw] w-36 h-36">
+                        <Image src="/assets/nuts/Cashew2.png" alt="Decorative Cashew" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="absolute top-[60vh] right-[8vw] w-44 h-44">
-                        <Image src="/assets/nuts/Cashew3.png" alt="Decorative Cashew" layout="fill" objectFit="contain" className="opacity-100" />
+                    <div className="absolute top-[65vh] right-[5vw] w-44 h-44">
+                        <Image src="/assets/nuts/Cashew3.png" alt="Decorative Cashew" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="absolute bottom-[5vh] left-[30vw] w-24 h-24">
-                        <Image src="/assets/nuts/Almond3.png" alt="Decorative Almond" layout="fill" objectFit="contain" className="opacity-100" />
+                    <div className="absolute bottom-[5vh] left-[40vw] w-24 h-24">
+                        <Image src="/assets/nuts/Almond3.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="absolute top-[5vh] right-[35vw] w-32 h-32">
-                        <Image src="/assets/nuts/Cashew1.png" alt="Decorative Cashew" layout="fill" objectFit="contain" className="opacity-100" />
+                    <div className="absolute top-[5vh] right-[30vw] w-32 h-32">
+                        <Image src="/assets/nuts/Cashew1.png" alt="Decorative Cashew" fill className="object-contain opacity-100" />
+                    </div>
+                     <div className="absolute bottom-[8vh] left-[70vw] w-24 h-24">
+                        <Image src="/assets/nuts/Almond3.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
+                    </div>
+                    <div className="absolute top-[8vh] right-[60vw] w-32 h-32">
+                        <Image src="/assets/nuts/Cashew1.png" alt="Decorative Cashew" fill className="object-contain opacity-100" />
+                    </div>
+                     <div className="absolute bottom-[50vh] left-[80vw] w-24 h-24">
+                        <Image src="/assets/nuts/Almond3.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
+                    </div>
+                    <div className="absolute top-[85vh] right-[45vw] w-32 h-32">
+                        <Image src="/assets/nuts/Cashew1.png" alt="Decorative Cashew" fill className="object-contain opacity-100" />
+                    </div>
+                    {/* Center-ish images */}
+                    <div className="absolute top-[35vh] left-[45vw] w-24 h-24">
+                        <Image src="/assets/nuts/Almond1.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
+                    </div>
+                    <div className="absolute top-[55vh] right-[40vw] w-36 h-36">
+                        <Image src="/assets/nuts/Cashew2.png" alt="Decorative Cashew" fill className="object-contain opacity-100" />
+                    </div>
+                    <div className="absolute bottom-[30vh] left-[30vw] w-28 h-28">
+                        <Image src="/assets/nuts/Almond2.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
                 </div>
 
                 <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-                    <h1 className="text-6xl md:text-8xl font-bold mb-6 tracking-tight font-serif" style={{color: '#065598'}}>
-                        Pure Chocolate
-                    </h1>
-                    <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto leading-relaxed" style={{color: '#065598'}}>
-                        Crafted with passion, made from the finest cacao beans. 
-                        Experience chocolate like never before.
-                    </p>
-                    <button className="text-white px-8 py-4 rounded-full text-lg font-semibold transition-colors duration-300 shadow-lg hover:opacity-90" style={{backgroundColor: '#065598'}}>
-                        Discover Our Chocolate
-                    </button>
+                    
                 </div>
                 <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
                     <div className="w-6 h-10 border-2 rounded-full flex justify-center" style={{borderColor: '#065598'}}>

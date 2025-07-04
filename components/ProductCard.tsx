@@ -25,7 +25,7 @@ export default function ProductCard({ id, name, imageUrl, bgColor, onClick }: Pr
                 
                 {/* Colored Content Area */}
                 <div 
-                    className="relative w-66 h-66 rounded-[50%/50%] transition-transform duration-300 group-hover:scale-105 flex items-center justify-center"
+                    className="relative w-66 h-66 rounded-[50%/50%] transition-transform duration-300 group-hover:scale-120 flex items-center justify-center"
                     style={{ backgroundColor: bgColor }}
                 >
                     {/* Product Image */}
