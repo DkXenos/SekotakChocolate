@@ -20,7 +20,7 @@ export const products: Product[] = [
         ingredients: "Oat base (water, oats), cane sugar, matcha tea powder, dipotassium phosphate, calcium carbonate, gellan gum",
         allergens: "Contains oats.",
         image: "/assets/products/matcha.png",
-        bgColor: "#8DBA6A" // Green
+        bgColor: "#73A02D" 
     },
     { 
         id: 2,
@@ -31,7 +31,7 @@ export const products: Product[] = [
         ingredients: "Oat base (water, oats), pea protein, cane sugar, cocoa powder, dipotassium phosphate, calcium carbonate, gellan gum",
         allergens: "Contains oats.",
         image: "/assets/products/cashew.png",
-        bgColor: "#C8A284" // Light Brown
+        bgColor: "#F8D3A7" 
     },
     { 
         id: 3,
@@ -42,7 +42,7 @@ export const products: Product[] = [
         ingredients: "Oat base (water, oats), pea protein, cane sugar, natural vanilla flavor, dipotassium phosphate, calcium carbonate, gellan gum",
         allergens: "Contains oats.",
         image: "/assets/products/almond.png",
-        bgColor: "#A9D2E5" // Light Blue
+        bgColor: "#AB784E" 
     },
     { 
         id: 4,
@@ -53,7 +53,7 @@ export const products: Product[] = [
         ingredients: "Oat base (water, oats), cane sugar, cocoa powder, sea salt, dipotassium phosphate, calcium carbonate, gellan gum",
         allergens: "Contains oats.",
         image: "/assets/products/darkc.png",
-        bgColor: "#C8A284" // Light Brown
+        bgColor: "#68ABE4" 
     },
     { 
         id: 5,
@@ -64,7 +64,7 @@ export const products: Product[] = [
         ingredients: "Organic cacao beans, organic milk powder, organic caramel, Himalayan salt, organic cane sugar",
         allergens: "Contains milk. May contain traces of nuts",
         image: "/assets/products/oreo.png",
-        bgColor: "#F9E477" // Yellow
+        bgColor: "#D45656" 
     },
     { 
         id: 6,
@@ -75,6 +75,6 @@ export const products: Product[] = [
         ingredients: "Organic cacao beans, organic cane sugar, organic cocoa butter, natural orange oil",
         allergens: "May contain traces of nuts and milk",
         image: "/assets/products/salted.png",
-        bgColor: "#8DBA6A" // Green
+        bgColor: "#FCDE71" 
     }
 ];
