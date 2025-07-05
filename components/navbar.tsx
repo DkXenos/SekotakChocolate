@@ -98,8 +98,8 @@ export default function Navbar() {
             {/* Dropdown Menu */}
             <div ref={menuOverlayRef} className="fixed inset-0 bg-white flex flex-col items-center justify-start pt-12 z-40" style={{top: '5rem'}}>
                 <div className="text-center space-y-6">
-                    <a href="#" className="menu-item block text-4xl font-serif text-gray-800 hover:text-[#065598] transition-colors duration-300">Home</a>
-                    <a href="#" className="menu-item block text-4xl font-serif text-gray-800 hover:text-[#065598] transition-colors duration-300">Our Chocolate</a>
+                    <a href="/" className="menu-item block text-4xl font-serif text-gray-800 hover:text-[#065598] transition-colors duration-300">Home</a>
+                    <a href="/Product" className="menu-item block text-4xl font-serif text-gray-800 hover:text-[#065598] transition-colors duration-300">Our Chocolate</a>
                     <a href="#" className="menu-item block text-4xl font-serif text-gray-800 hover:text-[#065598] transition-colors duration-300">Our Story</a>
                     <a href="#" className="menu-item block text-4xl font-serif text-gray-800 hover:text-[#065598] transition-colors duration-300">Sustainability</a>
                     <a href="#" className="menu-item block text-4xl font-serif text-gray-800 hover:text-[#065598] transition-colors duration-300">Contact Us</a>

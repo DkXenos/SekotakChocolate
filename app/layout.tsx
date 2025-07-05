@@ -5,9 +5,12 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
-  title: "Sekotak Chocolate - Premium Artisanal Chocolate",
+  title: "Sekotak Chocolate - Premium Nama Chocolate",
   description:
     "Discover our premium collection of artisanal chocolates crafted with the finest ingredients",
+  icons: {
+    icon: '/web_icon.svg',
+  },
 };
 
 export default function RootLayout({

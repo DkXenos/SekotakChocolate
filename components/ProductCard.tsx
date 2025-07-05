@@ -44,7 +44,7 @@ export default function ProductCard({ id, name, imageUrl, bgColor, onClick }: Pr
                     {id}
                 </div>
             </div>
-            <h3 className="mt-4 text-xl font-bold text-gray-800">{name}</h3>
+            <h3 className="mt-4 text-xl font-bold text-gray-800">{name} Chocolate</h3>
         </div>
     );
 }
