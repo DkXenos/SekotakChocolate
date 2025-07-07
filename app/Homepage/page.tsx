@@ -16,7 +16,7 @@ export default function Homepage() {
 
     useGSAP(() => {
         // Simple scroll-triggered animations for decorative images
-        gsap.utils.toArray(".decorative-image").forEach((image: any, index) => {
+        gsap.utils.toArray<Element>(".decorative-image").forEach((image) => {
             gsap.fromTo(image, 
                 {
                     x: 0,
