@@ -8,7 +8,16 @@ type ChatViewProps = {
 export default function ChatView({ product }: ChatViewProps) {
     return (
         <div className="space-y-4">
-            {/* Received Message (Image) */}
+            {/* Received Message (Product inquiry) */}
+            <div className="flex justify-end">
+                <div className="relative max-w-xs">
+                    <div className="bg-gray-200 text-gray-800 p-3 rounded-2xl">
+                        <p>Hey! Can you tell me about the {product.name} chocolate?</p>
+                    </div>
+                </div>
+            </div>
+
+            {/* Sent Message (Product Image) */}
             <div className="flex justify-start">
                 <div className="relative max-w-xs">
                     <div className="p-2 rounded-2xl bg-blue-500 border-[3px] border-blue-600">
@@ -23,30 +32,38 @@ export default function ChatView({ product }: ChatViewProps) {
                 </div>
             </div>
 
-            {/* Sent Message (Name) */}
+            {/* Sent Message (Introduction) */}
             <div className="flex justify-start">
                 <div className="relative max-w-xs">
                     <div className="bg-blue-500 text-white p-3 rounded-2xl">
-                        <p className="text-lg">Take a look at our {product.name} Chocolate!</p>
+                        <p>Absolutely! Our {product.name} chocolate is {product.description}</p>
                     </div>
                 </div>
             </div>
 
-            {/* Sent Message (Description) */}
-            <div className="flex justify-start">
-                <div className="relative max-w-xs">
-                    <div className="bg-blue-500 text-white p-3 rounded-2xl">
-                        <p>It's a fan favorite! We describe it as: <span className="font-semibold">"{product.description}"</span></p>
-                    </div>
-                </div>
-            </div>
-
-            {/* Received Message (Details) */}
+            {/* Received Message (More info request) */}
             <div className="flex justify-end">
                 <div className="relative max-w-xs">
                     <div className="bg-gray-200 text-gray-800 p-3 rounded-2xl">
-                        <h4 className="font-bold mb-1">Details</h4>
+                        <p>That sounds amazing! Can you tell me more about it?</p>
+                    </div>
+                </div>
+            </div>
+
+            {/* Sent Message (Details) */}
+            <div className="flex justify-start">
+                <div className="relative max-w-xs">
+                    <div className="bg-blue-500 text-white p-3 rounded-2xl">
                         <p className="text-sm">{product.details}</p>
+                    </div>
+                </div>
+            </div>
+
+            {/* Received Message (Ingredients inquiry) */}
+            <div className="flex justify-end">
+                <div className="relative max-w-xs">
+                    <div className="bg-gray-200 text-gray-800 p-3 rounded-2xl">
+                        <p>What ingredients do you use?</p>
                     </div>
                 </div>
             </div>
@@ -55,18 +72,43 @@ export default function ChatView({ product }: ChatViewProps) {
             <div className="flex justify-start">
                 <div className="relative max-w-xs">
                     <div className="bg-blue-500 text-white p-3 rounded-2xl">
-                        <h4 className="font-bold mb-1">Ingredients</h4>
                         <p className="text-sm">{product.ingredients}</p>
                     </div>
                 </div>
             </div>
 
-            {/* Received Message (Allergens) */}
+            {/* Received Message (Allergens inquiry) */}
             <div className="flex justify-end">
                 <div className="relative max-w-xs">
                     <div className="bg-gray-200 text-gray-800 p-3 rounded-2xl">
-                        <h4 className="font-bold mb-1">Allergens</h4>
+                        <p>Are there any allergens I should know about?</p>
+                    </div>
+                </div>
+            </div>
+
+            {/* Sent Message (Allergens) */}
+            <div className="flex justify-start">
+                <div className="relative max-w-xs">
+                    <div className="bg-blue-500 text-white p-3 rounded-2xl">
                         <p className="text-sm">{product.allergens}</p>
+                    </div>
+                </div>
+            </div>
+
+            {/* Received Message (Thank you) */}
+            <div className="flex justify-end">
+                <div className="relative max-w-xs">
+                    <div className="bg-gray-200 text-gray-800 p-3 rounded-2xl">
+                        <p>Perfect! Thanks for all the info 😊</p>
+                    </div>
+                </div>
+            </div>
+
+            {/* Sent Message (Closing) */}
+            <div className="flex justify-start">
+                <div className="relative max-w-xs">
+                    <div className="bg-blue-500 text-white p-3 rounded-2xl">
+                        <p>You're welcome! Hope you'll love our {product.name} chocolate! 🍫</p>
                     </div>
                 </div>
             </div>

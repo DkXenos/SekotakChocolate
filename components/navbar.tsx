@@ -40,7 +40,9 @@ export default function Navbar() {
                                 className="w-12 h-12 flex items-center justify-center rounded-lg transition-all duration-300 hover:scale-110 text-2xl font-bold"
                                 aria-label="Toggle menu"
                             >
-                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"
+                                     className="transition-transform duration-300"
+                                     style={{ transform: isMenuOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}>
                                     {isMenuOpen ? (
                                         <>
                                             <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -76,18 +78,39 @@ export default function Navbar() {
             </nav>
 
             {/* Dropdown Menu */}
-            {isMenuOpen && (
-                <div className="fixed inset-0 bg-white flex flex-col items-center justify-start pt-12 z-40" style={{top: '5rem'}}>
-                    <div className="text-center space-y-6">
-                        <a href="/" className="block text-4xl font-serif text-gray-800 hover:text-[#065598] transition-colors duration-300">Home</a>
-                        <a href="/Product" className="block text-4xl font-serif text-gray-800 hover:text-[#065598] transition-colors duration-300">Our Chocolate</a>
-                        <a href="#" className="block text-4xl font-serif text-gray-800 hover:text-[#065598] transition-colors duration-300">Our Story</a>
-                        <a href="#" className="block text-4xl font-serif text-gray-800 hover:text-[#065598] transition-colors duration-300">Sustainability</a>
-                        <a href="#" className="block text-4xl font-serif text-gray-800 hover:text-[#065598] transition-colors duration-300">Contact Us</a>
-                        <a href="#" className="block text-4xl font-serif text-gray-800 hover:text-[#065598] transition-colors duration-300">FAQ</a>
-                    </div>
+            <div 
+                className={`fixed inset-0 bg-white flex flex-col items-center justify-start pt-12 z-40 transition-all duration-300 ease-in-out ${
+                    isMenuOpen 
+                        ? 'opacity-100 translate-y-0' 
+                        : 'opacity-0 -translate-y-full pointer-events-none'
+                }`} 
+                style={{top: '5rem'}}
+            >
+                <div className="text-center space-y-6">
+                    {[
+                        { href: "/", text: "Home" },
+                        { href: "/Product", text: "Our Chocolate" },
+                        { href: "#", text: "Our Story" },
+                        { href: "#", text: "Contact Us" },
+                        { href: "#", text: "FAQ" }
+                    ].map((item, index) => (
+                        <a 
+                            key={item.text}
+                            href={item.href} 
+                            className={`block text-4xl font-serif text-gray-800 hover:text-[#065598] transition-all duration-300 transform ${
+                                isMenuOpen 
+                                    ? 'translate-y-0 opacity-100' 
+                                    : 'translate-y-4 opacity-0'
+                            }`}
+                            style={{
+                                transitionDelay: isMenuOpen ? `${index * 100}ms` : '0ms'
+                            }}
+                        >
+                            {item.text}
+                        </a>
+                    ))}
                 </div>
-            )}
+            </div>
         </div>
     );
 }

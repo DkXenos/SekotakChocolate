@@ -98,7 +98,7 @@ export default function Homepage() {
                             </div>
                             <h3 className="text-xl font-bold mb-4" style={{color: '#065598'}}>Sustainable Sourcing</h3>
                             <p className="text-gray-600">
-                                We work directly with farmers to ensure fair trade and sustainable practices
+                                By choosing Sekotak, you're part of a story that starts long before the chocolate reaches you
                             </p>
                         </div>
                         
@@ -114,7 +114,7 @@ export default function Homepage() {
                             </div>
                             <h3 className="text-xl font-bold mb-4" style={{color: '#065598'}}>Premium Quality</h3>
                             <p className="text-gray-600">
-                                Only the finest cacao beans are selected for our artisanal chocolate
+                                Experience the art of Indonesian Nama chocolate. We select only exceptional cacao beans to create our signature product
                             </p>
                         </div>
                         
@@ -130,7 +130,7 @@ export default function Homepage() {
                             </div>
                             <h3 className="text-xl font-bold mb-4" style={{color: '#065598'}}>Made with Love</h3>
                             <p className="text-gray-600">
-                                Every chocolate bar is crafted with passion and attention to detail
+                                From our hands to yours. Every piece of Sekotak Chocolate is a testament to our passion
                             </p>
                         </div>
                     </div>
@@ -160,7 +160,16 @@ export default function Homepage() {
 
                         {/* Chat-like Content */}
                         <div className="p-6 space-y-4 overflow-y-auto">
-                            {/* Received Message (Image) */}
+                            {/* Received Message (Product Image) */}
+                            <div className="flex justify-end">
+                                <div className="relative max-w-xs">
+                                    <div className="bg-gray-200 text-gray-800 p-3 rounded-2xl">
+                                        <p>Hey! Can you tell me about the {selectedProduct.name} chocolate?</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Sent Message (Product Image) */}
                             <div className="flex justify-start">
                                 <div className="relative max-w-xs">
                                     <div className="p-2 rounded-2xl bg-blue-500 border-[3px] border-blue-600">
@@ -175,30 +184,38 @@ export default function Homepage() {
                                 </div>
                             </div>
 
-                            {/* Sent Message (Name) */}
+                            {/* Sent Message (Introduction) */}
                             <div className="flex justify-start">
                                 <div className="relative max-w-xs">
                                     <div className="bg-blue-500 text-white p-3 rounded-2xl">
-                                        <p className="text-lg">Take a look at our {selectedProduct.name} Chocolate!</p>
+                                        <p>Absolutely! Our {selectedProduct.name} chocolate is {selectedProduct.description}</p>
                                     </div>
                                 </div>
                             </div>
 
-                             {/* Sent Message (Description) */}
-                             <div className="flex justify-start">
-                                <div className="relative max-w-xs">
-                                    <div className="bg-blue-500 text-white p-3 rounded-2xl">
-                                        <p>It's a fan favorite! We describe it as: <span className="font-semibold">"{selectedProduct.description}"</span></p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Received Message (Details) */}
+                            {/* Received Message (More info request) */}
                             <div className="flex justify-end">
                                 <div className="relative max-w-xs">
                                     <div className="bg-gray-200 text-gray-800 p-3 rounded-2xl">
-                                        <h4 className="font-bold mb-1">Details</h4>
+                                        <p>That sounds amazing! Can you tell me more about it?</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Sent Message (Details) */}
+                            <div className="flex justify-start">
+                                <div className="relative max-w-xs">
+                                    <div className="bg-blue-500 text-white p-3 rounded-2xl">
                                         <p className="text-sm">{selectedProduct.details}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Received Message (Ingredients inquiry) */}
+                            <div className="flex justify-end">
+                                <div className="relative max-w-xs">
+                                    <div className="bg-gray-200 text-gray-800 p-3 rounded-2xl">
+                                        <p>What ingredients do you use?</p>
                                     </div>
                                 </div>
                             </div>
@@ -207,18 +224,43 @@ export default function Homepage() {
                             <div className="flex justify-start">
                                 <div className="relative max-w-xs">
                                      <div className="bg-blue-500 text-white p-3 rounded-2xl">
-                                        <h4 className="font-bold mb-1">Ingredients</h4>
                                         <p className="text-sm">{selectedProduct.ingredients}</p>
                                     </div>
                                 </div>
                             </div>
 
-                             {/* Received Message (Allergens) */}
+                             {/* Received Message (Allergens inquiry) */}
                              <div className="flex justify-end">
                                 <div className="relative max-w-xs">
                                     <div className="bg-gray-200 text-gray-800 p-3 rounded-2xl">
-                                        <h4 className="font-bold mb-1">Allergens</h4>
+                                        <p>Are there any allergens I should know about?</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Sent Message (Allergens) */}
+                            <div className="flex justify-start">
+                                <div className="relative max-w-xs">
+                                    <div className="bg-blue-500 text-white p-3 rounded-2xl">
                                         <p className="text-sm">{selectedProduct.allergens}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Received Message (Thank you) */}
+                            <div className="flex justify-end">
+                                <div className="relative max-w-xs">
+                                    <div className="bg-gray-200 text-gray-800 p-3 rounded-2xl">
+                                        <p>Perfect! Thanks for all the info 😊</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Sent Message (Closing) */}
+                            <div className="flex justify-start">
+                                <div className="relative max-w-xs">
+                                    <div className="bg-blue-500 text-white p-3 rounded-2xl">
+                                        <p>You're welcome! Hope you'll love our {selectedProduct.name} chocolate! 🍫</p>
                                     </div>
                                 </div>
                             </div>
@@ -237,7 +279,8 @@ export default function Homepage() {
                         Join thousands of chocolate lovers who have discovered the difference
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <button className="text-black px-8 py-4 rounded-full text-lg font-semibold hover:opacity-90 transition-colors duration-300" style={{backgroundColor: '#FFDE6A'}}>
+                        <button onClick={() => window.location.href = '/Product'}
+                        className="text-black px-8 py-4 rounded-full text-lg font-semibold hover:opacity-90 transition-colors duration-300" style={{backgroundColor: '#FFDE6A'}}>
                             Explore Collection
                         </button>
                         <button 
