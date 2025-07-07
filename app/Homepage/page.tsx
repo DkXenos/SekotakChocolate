@@ -98,7 +98,7 @@ export default function Homepage() {
                             </div>
                             <h3 className="text-xl font-bold mb-4" style={{color: '#065598'}}>Sustainable Sourcing</h3>
                             <p className="text-gray-600">
-                                By choosing Sekotak, you're part of a story that starts long before the chocolate reaches you
+                                By choosing Sekotak, you&apos;re part of a story that starts long before the chocolate reaches you
                             </p>
                         </div>
                         
@@ -174,9 +174,11 @@ export default function Homepage() {
                                 <div className="relative max-w-xs">
                                     <div className="p-2 rounded-2xl bg-blue-500 border-[3px] border-blue-600">
                                         <div className="bg-orange-200 rounded-lg overflow-hidden">
-                                            <img
+                                            <Image
                                                 src={selectedProduct.image}
                                                 alt={selectedProduct.name}
+                                                width={200}
+                                                height={200}
                                                 className="w-full h-auto object-cover"
                                             />
                                         </div>
@@ -260,7 +262,7 @@ export default function Homepage() {
                             <div className="flex justify-start">
                                 <div className="relative max-w-xs">
                                     <div className="bg-blue-500 text-white p-3 rounded-2xl">
-                                        <p>You're welcome! Hope you'll love our {selectedProduct.name} chocolate! 🍫</p>
+                                        <p>You&apos;re welcome! Hope you&apos;ll love our {selectedProduct.name} chocolate! 🍫</p>
                                     </div>
                                 </div>
                             </div>

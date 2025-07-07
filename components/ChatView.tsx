@@ -22,9 +22,11 @@ export default function ChatView({ product }: ChatViewProps) {
                 <div className="relative max-w-xs">
                     <div className="p-2 rounded-2xl bg-blue-500 border-[3px] border-blue-600">
                         <div className="bg-orange-200 rounded-lg overflow-hidden">
-                            <img
+                            <Image
                                 src={product.image}
                                 alt={product.name}
+                                width={200}
+                                height={200}
                                 className="w-full h-auto object-cover"
                             />
                         </div>
@@ -108,7 +110,7 @@ export default function ChatView({ product }: ChatViewProps) {
             <div className="flex justify-start">
                 <div className="relative max-w-xs">
                     <div className="bg-blue-500 text-white p-3 rounded-2xl">
-                        <p>You're welcome! Hope you'll love our {product.name} chocolate! 🍫</p>
+                        <p>You&apos;re welcome! Hope you&apos;ll love our {product.name} chocolate! 🍫</p>
                     </div>
                 </div>
             </div>
