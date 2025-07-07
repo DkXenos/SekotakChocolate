@@ -1,65 +1,97 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import ProductCarousel from '@/components/ProductCarousel';
 import Image from 'next/image';
 import { Product, products } from '@/lib/products';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Homepage() {
     const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+    const heroRef = useRef(null);
+
+    useGSAP(() => {
+        // Simple scroll-triggered animations for decorative images
+        gsap.utils.toArray(".decorative-image").forEach((image: any, index) => {
+            gsap.fromTo(image, 
+                {
+                    x: 0,
+                    y: 0,
+                    rotation: 0
+                },
+                {
+                    x: Math.random() * 40 - 20, // Random movement between -20px and 20px
+                    y: Math.random() * 40 - 20, // Random movement between -20px and 20px
+                    rotation: Math.random() * 30 - 15, // Random rotation between -15deg and 15deg
+                    duration: 1,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: image,
+                        start: "top 80%",
+                        end: "bottom 20%",
+                        scrub: 1,
+                    }
+                }
+            );
+        });
+    }, []);
 
     return (
         <div className="min-h-screen bg-white">
             {/* Hero Section */}
-            <section className="relative h-screen flex items-center justify-center" style={{background: '#f5f5f5'}}>
+            <section ref={heroRef} className="relative h-screen flex items-center justify-center" style={{background: '#f5f5f5'}}>
                 {/* Decorative Images Container */}
                 <div className="absolute inset-0 overflow-hidden z-0">
                     {/* Template for images - add as many as you need */}
                     {/* Using percentages for positioning and vw for size to maintain relative layout and scale on different devices. */}
-                    <div className="absolute top-[10%] left-[5%] w-16 h-16 md:w-24 md:h-24">
+                    <div className="decorative-image absolute top-[10%] left-[5%] w-16 h-16 md:w-24 md:h-24">
                         <Image src="/assets/nuts/Almond1.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="absolute top-[20%] right-[8%] w-20 h-20 md:w-32 md:h-32">
+                    <div className="decorative-image absolute top-[20%] right-[8%] w-20 h-20 md:w-32 md:h-32">
                         <Image src="/assets/nuts/Almond2.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="absolute bottom-[15%] left-[15%] w-16 h-16 md:w-28 md:h-28">
+                    <div className="decorative-image absolute bottom-[15%] left-[15%] w-16 h-16 md:w-28 md:h-28">
                         <Image src="/assets/nuts/Almond3.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="absolute bottom-[25%] right-[20%] w-14 h-14 md:w-20 md:h-20">
+                    <div className="decorative-image absolute bottom-[25%] right-[20%] w-14 h-14 md:w-20 md:h-20">
                         <Image src="/assets/nuts/Cashew1.png" alt="Decorative Cashew" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="absolute top-[45%] left-[2%] w-16 h-16 md:w-24 md:h-24">
+                    <div className="decorative-image absolute top-[45%] left-[2%] w-16 h-16 md:w-24 md:h-24">
                         <Image src="/assets/nuts/Cashew2.png" alt="Decorative Cashew" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="absolute top-[65%] right-[5%] w-20 h-20 md:w-28 md:h-28">
+                    <div className="decorative-image absolute top-[65%] right-[5%] w-20 h-20 md:w-28 md:h-28">
                         <Image src="/assets/nuts/Cashew3.png" alt="Decorative Cashew" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="absolute bottom-[10%] left-[40%] w-12 h-12 md:w-16 md:h-16">
+                    <div className="decorative-image absolute bottom-[10%] left-[40%] w-12 h-12 md:w-16 md:h-16">
                         <Image src="/assets/nuts/Almond3.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="absolute top-[5%] right-[30%] w-14 h-14 md:w-20 md:h-20">
+                    <div className="decorative-image absolute top-[5%] right-[30%] w-14 h-14 md:w-20 md:h-20">
                         <Image src="/assets/nuts/Cashew1.png" alt="Decorative Cashew" fill className="object-contain opacity-100" />
                     </div>
-                     <div className="absolute bottom-[8%] left-[70%] w-12 h-12 md:w-16 md:h-16">
+                     <div className="decorative-image absolute bottom-[8%] left-[70%] w-12 h-12 md:w-16 md:h-16">
                         <Image src="/assets/nuts/Almond3.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="absolute top-[8%] right-[60%] w-14 h-14 md:w-20 md:h-20">
+                    <div className="decorative-image absolute top-[8%] right-[60%] w-14 h-14 md:w-20 md:h-20">
                         <Image src="/assets/nuts/Cashew1.png" alt="Decorative Cashew" fill className="object-contain opacity-100" />
                     </div>
-                     <div className="absolute bottom-[50%] left-[80%] w-12 h-12 md:w-16 md:h-16">
+                     <div className="decorative-image absolute bottom-[50%] left-[80%] w-12 h-12 md:w-16 md:h-16">
                         <Image src="/assets/nuts/Almond3.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="absolute top-[75%] right-[45%] w-14 h-14 md:w-20 md:h-20">
+                    <div className="decorative-image absolute top-[75%] right-[45%] w-14 h-14 md:w-20 md:h-20">
                         <Image src="/assets/nuts/Cashew1.png" alt="Decorative Cashew" fill className="object-contain opacity-100" />
                     </div>
                     {/* Center-ish images */}
-                    <div className="absolute top-[35%] left-[45%] w-12 h-12 md:w-16 md:h-16">
+                    <div className="decorative-image absolute top-[35%] left-[45%] w-12 h-12 md:w-16 md:h-16">
                         <Image src="/assets/nuts/Almond1.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="absolute top-[55%] right-[40%] w-16 h-16 md:w-24 md:h-24">
+                    <div className="decorative-image absolute top-[55%] right-[40%] w-16 h-16 md:w-24 md:h-24">
                         <Image src="/assets/nuts/Cashew2.png" alt="Decorative Cashew" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="absolute bottom-[30%] left-[30%] w-14 h-14 md:w-20 md:h-20">
+                    <div className="decorative-image absolute bottom-[30%] left-[30%] w-14 h-14 md:w-20 md:h-20">
                         <Image src="/assets/nuts/Almond2.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
                 </div>

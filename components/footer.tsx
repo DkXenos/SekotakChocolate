@@ -54,12 +54,6 @@ export default function Footer() {
                                 <li><Link href="/faq" className="hover:underline">FAQ</Link></li>
                             </ul>
                         </div>
-                        <div className="animate-footer">
-                            <h3 className="font-bold text-lg mb-4">Contact</h3>
-                            <ul className="space-y-2">
-                                <li><Link href="/contact" className="hover:underline">Contact Us</Link></li>
-                            </ul>
-                        </div>
                     </div>
 
                     {/* Community */}
