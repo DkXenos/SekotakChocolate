@@ -35,6 +35,28 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* Hide scrollbar for webkit browsers (Safari, Chrome) */
+.overflow-x-auto::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Firefox */
+.overflow-x-auto {
+  scrollbar-width: none;
+}
+
+/* Hide scrollbar for mobile devices */
+@media (max-width: 768px) {
+  .overflow-x-auto {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+  .overflow-x-auto::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -46,37 +68,4 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: 'Montserrat', sans-serif;
-}
-
-/* Carousel Animations */
-@keyframes scroll-right {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(0%);
-  }
-}
-
-@keyframes scroll-left {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
-.animate-scroll-right {
-  animation: scroll-right 60s linear infinite;
-}
-
-.animate-scroll-left {
-  animation: scroll-left 60s linear infinite;
-}
-
-/* Pause animation on hover */
-.animate-scroll-right:hover,
-.animate-scroll-left:hover {
-  animation-play-state: paused;
 }

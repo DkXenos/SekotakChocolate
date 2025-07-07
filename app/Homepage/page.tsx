@@ -15,50 +15,51 @@ export default function Homepage() {
                 {/* Decorative Images Container */}
                 <div className="absolute inset-0 overflow-hidden z-0">
                     {/* Template for images - add as many as you need */}
-                    <div className="absolute top-[10vh] left-[5vw] w-32 h-32">
+                    {/* Using percentages for positioning and vw for size to maintain relative layout and scale on different devices. */}
+                    <div className="absolute top-[10%] left-[5%] w-16 h-16 md:w-24 md:h-24">
                         <Image src="/assets/nuts/Almond1.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="absolute top-[20vh] right-[8vw] w-48 h-48">
+                    <div className="absolute top-[20%] right-[8%] w-20 h-20 md:w-32 md:h-32">
                         <Image src="/assets/nuts/Almond2.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="absolute bottom-[15vh] left-[15vw] w-40 h-40">
+                    <div className="absolute bottom-[15%] left-[15%] w-16 h-16 md:w-28 md:h-28">
                         <Image src="/assets/nuts/Almond3.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="absolute bottom-[25vh] right-[20vw] w-28 h-28">
+                    <div className="absolute bottom-[25%] right-[20%] w-14 h-14 md:w-20 md:h-20">
                         <Image src="/assets/nuts/Cashew1.png" alt="Decorative Cashew" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="absolute top-[45vh] left-[2vw] w-36 h-36">
+                    <div className="absolute top-[45%] left-[2%] w-16 h-16 md:w-24 md:h-24">
                         <Image src="/assets/nuts/Cashew2.png" alt="Decorative Cashew" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="absolute top-[65vh] right-[5vw] w-44 h-44">
+                    <div className="absolute top-[65%] right-[5%] w-20 h-20 md:w-28 md:h-28">
                         <Image src="/assets/nuts/Cashew3.png" alt="Decorative Cashew" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="absolute bottom-[5vh] left-[40vw] w-24 h-24">
+                    <div className="absolute bottom-[10%] left-[40%] w-12 h-12 md:w-16 md:h-16">
                         <Image src="/assets/nuts/Almond3.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="absolute top-[5vh] right-[30vw] w-32 h-32">
+                    <div className="absolute top-[5%] right-[30%] w-14 h-14 md:w-20 md:h-20">
                         <Image src="/assets/nuts/Cashew1.png" alt="Decorative Cashew" fill className="object-contain opacity-100" />
                     </div>
-                     <div className="absolute bottom-[8vh] left-[70vw] w-24 h-24">
+                     <div className="absolute bottom-[8%] left-[70%] w-12 h-12 md:w-16 md:h-16">
                         <Image src="/assets/nuts/Almond3.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="absolute top-[8vh] right-[60vw] w-32 h-32">
+                    <div className="absolute top-[8%] right-[60%] w-14 h-14 md:w-20 md:h-20">
                         <Image src="/assets/nuts/Cashew1.png" alt="Decorative Cashew" fill className="object-contain opacity-100" />
                     </div>
-                     <div className="absolute bottom-[50vh] left-[80vw] w-24 h-24">
+                     <div className="absolute bottom-[50%] left-[80%] w-12 h-12 md:w-16 md:h-16">
                         <Image src="/assets/nuts/Almond3.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="absolute top-[85vh] right-[45vw] w-32 h-32">
+                    <div className="absolute top-[75%] right-[45%] w-14 h-14 md:w-20 md:h-20">
                         <Image src="/assets/nuts/Cashew1.png" alt="Decorative Cashew" fill className="object-contain opacity-100" />
                     </div>
                     {/* Center-ish images */}
-                    <div className="absolute top-[35vh] left-[45vw] w-24 h-24">
+                    <div className="absolute top-[35%] left-[45%] w-12 h-12 md:w-16 md:h-16">
                         <Image src="/assets/nuts/Almond1.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="absolute top-[55vh] right-[40vw] w-36 h-36">
+                    <div className="absolute top-[55%] right-[40%] w-16 h-16 md:w-24 md:h-24">
                         <Image src="/assets/nuts/Cashew2.png" alt="Decorative Cashew" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="absolute bottom-[30vh] left-[30vw] w-28 h-28">
+                    <div className="absolute bottom-[30%] left-[30%] w-14 h-14 md:w-20 md:h-20">
                         <Image src="/assets/nuts/Almond2.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
                 </div>
