@@ -24,17 +24,6 @@ export const products: Product[] = [
     },
     { 
         id: 2,
-        name: "Cashew", 
-        description: "Chocolate-flavored oat milk packed with plant-based protein.",
-        shortDesc: "Chocolate oat milk with a protein boost",
-        details: "The classic taste of chocolate oat milk, now with an added 20g of plant-based protein to fuel your day.",
-        ingredients: "Oat base (water, oats), pea protein, cane sugar, cocoa powder, dipotassium phosphate, calcium carbonate, gellan gum",
-        allergens: "Contains oats.",
-        image: "/assets/products/cashew.png",
-        bgColor: "#F8D3A7" 
-    },
-    { 
-        id: 3,
         name: "Almond", 
         description: "Vanilla-flavored oat milk with a high-protein formula.",
         shortDesc: "Vanilla oat milk with added protein",
@@ -45,7 +34,7 @@ export const products: Product[] = [
         bgColor: "#AB784E" 
     },
     { 
-        id: 4,
+        id: 3,
         name: "Dark", 
         description: "An intense and velvety 70% dark chocolate experience.",
         shortDesc: "Rich & Intense Dark Nama Chocolate",
@@ -56,7 +45,7 @@ export const products: Product[] = [
         bgColor: "#68ABE4" 
     },
     { 
-        id: 5,
+        id: 4,
         name: "Oreo", 
         description: "Creamy white chocolate packed with crushed Oreo cookie pieces.",
         shortDesc: "Cookies & Cream Nama Chocolate",
@@ -67,7 +56,7 @@ export const products: Product[] = [
         bgColor: "#D45656" 
     },
     { 
-        id: 6,
+        id: 5,
         name: "Salted Caramel", 
         description: "Sweet, buttery caramel with a hint of Himalayan pink salt.",
         shortDesc: "Sweet & Salty Caramel Nama",
