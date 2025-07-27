@@ -21,24 +21,21 @@ export default function ProductCard({
       onClick={onClick}
     >
       {/* Container for the visual elements */}
-      <div className="relative w-56 h-80 mx-auto">
-        {/* The shaped container with background color, border, and hover effect */}
-        <div
-          className="w-full h-full rounded-[50%/25%] p-8 flex items-center justify-center
-                     transition-transform duration-300 group-hover:scale-110
-                     shadow-[0_0_0_3px_black]"
-          style={{ backgroundColor: bgColor }}
-        >
-          {/* Product Image */}
-          <div className="relative w-full h-full">
-            <Image
-              src={imageUrl}
-              alt={name}
-              fill
-              className="object-contain"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
-          </div>
+      <div
+        className="relative w-56 h-80 mx-auto rounded-[50%/25%] flex items-center justify-center p-4
+                   transition-transform duration-300 group-hover:scale-110
+                   shadow-[0_0_0_3px_black]"
+        style={{ backgroundColor: bgColor }}
+      >
+        {/* Product Image with a fixed aspect ratio container */}
+        <div className="relative w-full h-full">
+          <Image
+            src={imageUrl}
+            alt={name}
+            fill
+            className="object-contain"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
         </div>
       </div>
 
