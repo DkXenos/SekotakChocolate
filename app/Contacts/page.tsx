@@ -35,8 +35,8 @@ export default function ContactPage() {
                         <i className="bi bi-instagram text-5xl mb-4" style={{ color: '#065598' }}></i>
                         <h2 className="text-2xl font-bold text-gray-800 mb-2">Follow Our Journey</h2>
                         <p className="text-gray-600 mb-4">Join our community for updates and sweet content.</p>
-                        <a href="https://www.instagram.com/sekotak" target="_blank" rel="noopener noreferrer" className="font-semibold text-lg text-blue-600 hover:underline">
-                            @sekotak
+                        <a href="https://www.instagram.com/sekotakchocolate/" target="_blank" rel="noopener noreferrer" className="font-semibold text-lg text-blue-600 hover:underline">
+                            @sekotakchocolate
                         </a>
                     </div>
                 </div>

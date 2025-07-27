@@ -18,16 +18,15 @@ export default function Homepage() {
         const hero = heroRef.current;
         if (!hero) return;
 
-        // Smaller, fixed offsets to scatter assets AROUND the center
+        // More varied and natural-looking offsets to scatter assets
         const animationPresets = [
-            { x: -50, y: 40, rotation: -35 }, { x: -40, y: 30, rotation: 45 },
-            { x: 60, y: -30, rotation: 25 }, { x: -50, y: -40, rotation: -50 },
-            { x: 30, y: 50, rotation: 15 }, { x: -60, y: 40, rotation: -20 },
-            { x: 40, y: -50, rotation: 60 }, { x: -35, y: -35, rotation: -10 },
-            { x: 35, y: 35, rotation: 10 }, { x: -45, y: 45, rotation: -30 },
-            { x: 45, y: -45, rotation: 30 }, { x: 20, y: 60, rotation: 5 },
-            { x: -60, y: -20, rotation: -5 }, { x: 55, y: 25, rotation: 40 },
-            { x: -25, y: -55, rotation: -40 },
+            { x: 150, y: 120, rotation: -25 }, { x: -140, y: 130, rotation: 35 },
+            { x: 145, y: -120, rotation: 15 }, { x: -135, y: -125, rotation: -45 },
+            { x: 75, y: -140, rotation: 50 }, { x: -100, y: 75, rotation: -10 },
+            { x: 110, y: 90, rotation: 60 }, { x: -90, y: -110, rotation: -5 },
+            { x: 50, y: 75, rotation: 20 }, { x: -60, y: -50, rotation: -30 },
+            { x: 125, y: 50, rotation: 5 }, { x: -50, y: 125, rotation: -15 },
+            { x: 90, y: -75, rotation: 40 },
         ];
 
         gsap.utils.toArray<Element>(".decorative-image").forEach((image, index) => {
@@ -65,50 +64,50 @@ export default function Homepage() {
                 <div className="absolute inset-0 overflow-hidden z-0">
                     {/* Template for images - add as many as you need */}
                     {/* Using percentages for positioning and vw for size to maintain relative layout and scale on different devices. */}
-                    <div className="decorative-image absolute top-[5rem] left-[8rem] w-16 h-16 md:w-24 md:h-24">
+                    <div className="decorative-image absolute top-[5rem] left-[8rem] w-20 h-20 md:w-32 md:h-32">
                         <Image src="/assets/nuts/Almond1.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="decorative-image absolute top-[8rem] right-[10rem] w-20 h-20 md:w-32 md:h-32">
+                    <div className="decorative-image absolute top-[8rem] right-[10rem] w-24 h-24 md:w-40 md:h-40">
                         <Image src="/assets/nuts/Almond2.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="decorative-image absolute bottom-[10rem] left-[12rem] w-16 h-16 md:w-28 md:h-28">
+                    <div className="decorative-image absolute bottom-[10rem] left-[12rem] w-20 h-20 md:w-36 md:h-36">
                         <Image src="/assets/nuts/Almond3.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="decorative-image absolute bottom-[15rem] right-[15rem] w-14 h-14 md:w-20 md:h-20">
+                    <div className="decorative-image absolute bottom-[15rem] right-[15rem] w-16 h-16 md:w-28 md:h-28">
                         <Image src="/assets/nuts/Almond1.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="decorative-image absolute top-[25rem] left-[5rem] w-16 h-16 md:w-24 md:h-24">
+                    <div className="decorative-image absolute top-[25rem] left-[5rem] w-20 h-20 md:w-32 md:h-32">
                         <Image src="/assets/nuts/Almond2.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="decorative-image absolute top-[35rem] right-[8rem] w-20 h-20 md:w-28 md:h-28">
+                    <div className="decorative-image absolute top-[35rem] right-[8rem] w-24 h-24 md:w-36 md:h-36">
                         <Image src="/assets/nuts/Almond3.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="decorative-image absolute bottom-[8rem] left-[30rem] w-12 h-12 md:w-16 md:h-16">
+                    <div className="decorative-image absolute bottom-[8rem] left-[30rem] w-16 h-16 md:w-24 md:h-24">
                         <Image src="/assets/nuts/Almond3.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="decorative-image absolute top-[4rem] right-[25rem] w-14 h-14 md:w-20 md:h-20">
+                    <div className="decorative-image absolute top-[4rem] right-[25rem] w-16 h-16 md:w-28 md:h-28">
                         <Image src="/assets/nuts/Almond1.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                     <div className="decorative-image absolute bottom-[6rem] left-[45rem] w-12 h-12 md:w-16 md:h-16">
+                     <div className="decorative-image absolute bottom-[6rem] left-[45rem] w-16 h-16 md:w-24 md:h-24">
                         <Image src="/assets/nuts/Almond3.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="decorative-image absolute top-[6rem] right-[40rem] w-14 h-14 md:w-20 md:h-20">
+                    <div className="decorative-image absolute top-[6rem] right-[40rem] w-16 h-16 md:w-28 md:h-28">
                         <Image src="/assets/nuts/Almond1.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                     <div className="decorative-image absolute bottom-[25rem] left-[55rem] w-12 h-12 md:w-16 md:h-16">
+                     <div className="decorative-image absolute bottom-[25rem] left-[55rem] w-16 h-16 md:w-24 md:h-24">
                         <Image src="/assets/nuts/Almond3.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="decorative-image absolute top-[40rem] right-[30rem] w-14 h-14 md:w-20 md:h-20">
+                    <div className="decorative-image absolute top-[40rem] right-[30rem] w-16 h-16 md:w-28 md:h-28">
                         <Image src="/assets/nuts/Almond1.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
                     {/* Center-ish images */}
-                    <div className="decorative-image absolute top-[20rem] left-[35rem] w-12 h-12 md:w-16 md:h-16">
+                    <div className="decorative-image absolute top-[20rem] left-[35rem] w-16 h-16 md:w-24 md:h-24">
                         <Image src="/assets/nuts/Almond1.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="decorative-image absolute top-[30rem] right-[38rem] w-16 h-16 md:w-24 md:h-24">
+                    <div className="decorative-image absolute top-[30rem] right-[38rem] w-20 h-20 md:w-32 md:h-32">
                         <Image src="/assets/nuts/Almond2.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="decorative-image absolute bottom-[20rem] left-[25rem] w-14 h-14 md:w-20 md:h-20">
+                    <div className="decorative-image absolute bottom-[20rem] left-[25rem] w-16 h-16 md:w-28 md:h-28">
                         <Image src="/assets/nuts/Almond2.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
                 </div>

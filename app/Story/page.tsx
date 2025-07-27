@@ -98,7 +98,7 @@ export default function StoryPage() {
       <section className="py-20 px-4 bg-[#065598] text-white story-section text-center">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold font-serif mb-4 anim-element">
-            The "Nama-ste" Moment
+            The &quot;Nama-ste&quot; Moment
           </h2>
           <p className="text-xl md:text-2xl max-w-3xl mx-auto anim-element">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -113,12 +113,12 @@ export default function StoryPage() {
       <section className="py-20 px-4 text-center story-section">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold font-serif text-[#065598] mb-6 anim-element">
-            Why "Sekotak"?
+            Why &quot;Sekotak&quot;?
           </h2>
           <p className="text-xl mb-8 anim-element">
-            In Indonesian, "Sekotak" means{" "}
-            <span className="font-bold">"a box."</span> For us, it's more than
-            that. It's a box of joy, a box of comfort, a box of meticulously
+            In Indonesian, &quot;Sekotak&quot; means{" "}
+            <span className="font-bold">&quot;a box.&quot;</span> For us, it&apos;s more than
+            that. It&apos;s a box of joy, a box of comfort, a box of meticulously
             crafted happiness waiting to be opened.
           </p>
           <div className="w-full h-96 relative rounded-2xl overflow-hidden shadow-2xl anim-element">
@@ -165,7 +165,7 @@ export default function StoryPage() {
       <section className="py-20 px-4 text-center bg-[#FFECBA] story-section text-center">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold font-serif text-[#065598] mb-6 anim-element">
-            Ready for Your Own "Aha!" Moment?
+            Ready for Your Own &quot;Aha!&quot; Moment?
           </h2>
           <p className="text-xl mb-8 text-gray-700 anim-element">
             Enough talk. The real story is in the taste.

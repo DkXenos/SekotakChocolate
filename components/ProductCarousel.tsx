@@ -37,10 +37,14 @@ export default function ProductCarousel({ products, onProductClick }: ProductCar
 
         // The main animation function
         const animate = (startPosition = 0) => {
+            const remainingWidth = singleSetWidth - startPosition;
+            const totalDuration = 40; // Base duration for a full scroll
+            const remainingDuration = (remainingWidth / singleSetWidth) * totalDuration;
+
             // Animate from the startPosition to the end of the first set
             gsap.to(carousel, {
                 scrollLeft: singleSetWidth,
-                duration: 40, // Adjust for speed (higher number is slower)
+                duration: remainingDuration,
                 ease: 'none',
                 // When the animation completes, jump back to the beginning and restart
                 onComplete: () => {

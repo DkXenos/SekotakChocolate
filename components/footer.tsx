@@ -58,10 +58,10 @@ export default function Footer() {
 
                     {/* Community */}
                     <div className="md:col-span-3 flex justify-center md:justify-end animate-footer">
-                        <a href="https://www.instagram.com/sekotak" target="_blank" rel="noopener noreferrer" className="inline-block border-2 border-black rounded-full px-5 py-3 text-center font-semibold hover:bg-black hover:text-white transition-colors duration-300">
+                        <a href="https://www.instagram.com/sekotakchocolate/" target="_blank" rel="noopener noreferrer" className="inline-block border-2 border-black rounded-full px-5 py-3 text-center font-semibold hover:bg-black hover:text-white transition-colors duration-300">
                             <div className="text-sm">Join the Community</div>
                             <div className="flex items-center justify-center gap-2 font-bold">
-                                <span>@sekotak</span>
+                                <span>@sekotakchocolate</span>
                                 <i className="bi bi-instagram text-lg"></i>
                             </div>
                         </a>
