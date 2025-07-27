@@ -1,5 +1,11 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import { Draggable } from 'gsap/Draggable';
 import ProductCard from './ProductCard';
+
+// Register the Draggable plugin
+gsap.registerPlugin(Draggable);
 
 type Product = {
     id: number;
@@ -19,61 +25,51 @@ type ProductCarouselProps = {
 };
 
 export default function ProductCarousel({ products, onProductClick }: ProductCarouselProps) {
-    // Create multiple copies of products for infinite scroll
-    const infiniteProducts = [...products, ...products, ...products, ...products];
-    const scrollRef = useRef<HTMLDivElement>(null);
+    const carouselRef = useRef<HTMLDivElement>(null);
+    // Duplicate products to create the infinite loop effect
+    const infiniteProducts = [...products, ...products];
 
-    useEffect(() => {
-        const scrollContainer = scrollRef.current;
-        if (!scrollContainer) return;
+    useGSAP(() => {
+        const carousel = carouselRef.current;
+        if (!carousel || products.length === 0) return;
 
-        let animationId: number;
-        let isUserScrolling = false;
-        let userScrollTimeout: NodeJS.Timeout;
+        const singleSetWidth = carousel.scrollWidth / 2;
 
-        const autoScroll = () => {
-            if (!isUserScrolling && scrollContainer) {
-                scrollContainer.scrollLeft += 0.5; // Slow scroll speed
-                
-                // Reset to beginning when reaching 3/4 of the way through for smoother infinite effect
-                const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
-                const resetPoint = maxScroll * 0.75; // Reset at 75% instead of 50%
-                
-                if (scrollContainer.scrollLeft >= resetPoint) {
-                    scrollContainer.scrollLeft = 0;
-                }
+        // The main animation function
+        const animate = (startPosition = 0) => {
+            // Animate from the startPosition to the end of the first set
+            gsap.to(carousel, {
+                scrollLeft: singleSetWidth,
+                duration: 40, // Adjust for speed (higher number is slower)
+                ease: 'none',
+                // When the animation completes, jump back to the beginning and restart
+                onComplete: () => {
+                    carousel.scrollLeft = 0;
+                    animate(0);
+                },
+                // Overwrite any conflicting animations
+                overwrite: 'auto',
+            });
+        };
+
+        // Set up GSAP Draggable
+        Draggable.create(carousel, {
+            type: "scrollLeft",
+            edgeResistance: 0.9, // Makes it feel "sticky" at the edges
+            onDragStart: () => {
+                // Kill the animation when the user starts dragging
+                gsap.killTweensOf(carousel);
+            },
+            onDragEnd: () => {
+                // When the user stops dragging, restart the animation from the current position
+                animate(carousel.scrollLeft);
             }
-            animationId = requestAnimationFrame(autoScroll);
-        };
+        });
 
-        // Detect user scrolling
-        const handleUserScroll = () => {
-            isUserScrolling = true;
-            clearTimeout(userScrollTimeout);
-            
-            // Resume auto-scroll after user stops scrolling
-            userScrollTimeout = setTimeout(() => {
-                isUserScrolling = false;
-            }, 3000); // Resume after 3 seconds of no user interaction
-        };
+        // Start the initial animation
+        animate();
 
-        scrollContainer.addEventListener('scroll', handleUserScroll);
-        scrollContainer.addEventListener('touchstart', handleUserScroll);
-        scrollContainer.addEventListener('mousedown', handleUserScroll);
-
-        // Start auto-scroll
-        animationId = requestAnimationFrame(autoScroll);
-
-        return () => {
-            if (animationId) {
-                cancelAnimationFrame(animationId);
-            }
-            clearTimeout(userScrollTimeout);
-            scrollContainer.removeEventListener('scroll', handleUserScroll);
-            scrollContainer.removeEventListener('touchstart', handleUserScroll);
-            scrollContainer.removeEventListener('mousedown', handleUserScroll);
-        };
-    }, []);
+    }, { dependencies: [products], scope: carouselRef });
 
     return (
         <section className="py-20 bg-white">
@@ -89,9 +85,9 @@ export default function ProductCarousel({ products, onProductClick }: ProductCar
             </div>
 
             <div 
-                ref={scrollRef}
-                className="overflow-x-auto overflow-y-hidden"
-                style={{ scrollBehavior: 'auto' }}
+                ref={carouselRef}
+                className="overflow-x-auto overflow-y-hidden cursor-grab"
+                style={{ scrollbarWidth: 'none' }} // Hide scrollbar for Firefox
             >
                 <div className="flex space-x-8 px-4 pb-4 py-8" style={{ width: 'max-content' }}>
                     {infiniteProducts.map((product, index) => (
