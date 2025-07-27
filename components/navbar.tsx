@@ -60,16 +60,19 @@ export default function Navbar() {
                         </div>
 
                         {/* Center: Logo */}
-                        <div className="flex-1 flex justify-center">
-                            <div className="flex-shrink-0">
-                                <img
-                                    src="/assets/logo/sekotak.svg"
-                                    alt="Sekotak Chocolate"
-                                    className="h-10 w-auto"
-                                    style={{ filter: 'brightness(0) invert(1)' }}
-                                />
+                        
+                        <button onClick={() => window.location.href = '/'}>
+                            <div className="flex-1 flex justify-center">
+                                <div className="flex-shrink-0">
+                                    <img
+                                        src="/assets/logo/sekotak.svg"
+                                        alt="Sekotak Chocolate"
+                                        className="h-10 w-auto"
+                                        style={{ filter: 'brightness(0) invert(1)' }}
+                                    />
+                                </div>
                             </div>
-                        </div>
+                        </button>
 
                         {/* Right: Empty placeholder for balance */}
                         <div className="flex-1"></div>

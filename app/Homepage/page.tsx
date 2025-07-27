@@ -18,22 +18,41 @@ export default function Homepage() {
         const hero = heroRef.current;
         if (!hero) return;
 
-        // Animate images from a circular area around the center to their final positions
-        gsap.utils.toArray<Element>(".decorative-image").forEach((image) => {
-            const scatterRadius = 200; // Controls the scatter range
-            const angle = Math.random() * 2 * Math.PI;
-            const radius = Math.random() * scatterRadius;
-            const randomX = Math.cos(angle) * radius;
-            const randomY = Math.sin(angle) * radius;
+        // Smaller, fixed offsets to scatter assets AROUND the center
+        const animationPresets = [
+            { x: 50, y: 40, rotation: -35 }, { x: -40, y: 30, rotation: 45 },
+            { x: 60, y: -30, rotation: 25 }, { x: -50, y: -40, rotation: -50 },
+            { x: 30, y: 50, rotation: 15 }, { x: -60, y: 40, rotation: -20 },
+            { x: 40, y: -50, rotation: 60 }, { x: -35, y: -35, rotation: -10 },
+            { x: 35, y: 35, rotation: 10 }, { x: -45, y: 45, rotation: -30 },
+            { x: 45, y: -45, rotation: 30 }, { x: 20, y: 60, rotation: 5 },
+            { x: -60, y: -20, rotation: -5 }, { x: 55, y: 25, rotation: 40 },
+            { x: -25, y: -55, rotation: -40 },
+        ];
 
+        gsap.utils.toArray<Element>(".decorative-image").forEach((image, index) => {
+            const preset = animationPresets[index % animationPresets.length];
+
+            // Calculate the vector to the center of the hero section
+            const centerX = (hero.clientWidth / 2) - (image.getBoundingClientRect().left + image.clientWidth / 2);
+            const centerY = (hero.clientHeight / 2) - (image.getBoundingClientRect().top + image.clientHeight / 2);
+
+            // Start from the center, plus the small, fixed offset
+            const startX = centerX + preset.x;
+            const startY = centerY + preset.y;
+
+            // Animate from the fixed preset position to the final CSS position
             gsap.from(image, {
-                x: (hero.clientWidth / 2) - (image.getBoundingClientRect().left + image.clientWidth / 2) + randomX,
-                y: (hero.clientHeight / 2) - (image.getBoundingClientRect().top + image.clientHeight / 2) + randomY,
-                opacity: 0,
-                rotation: Math.random() * 90 - 45,
-                duration: 1.5,
-                ease: 'power3.out',
-                delay: Math.random() * 0.5
+                x: startX,
+                y: startY,
+                rotation: preset.rotation,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: hero,
+                    start: "top top",
+                    end: "+=500",
+                    scrub: 1.5,
+                }
             });
         });
     }, { scope: heroRef });
@@ -46,50 +65,50 @@ export default function Homepage() {
                 <div className="absolute inset-0 overflow-hidden z-0">
                     {/* Template for images - add as many as you need */}
                     {/* Using percentages for positioning and vw for size to maintain relative layout and scale on different devices. */}
-                    <div className="decorative-image absolute top-[10%] left-[5%] w-16 h-16 md:w-24 md:h-24">
+                    <div className="decorative-image absolute top-[5rem] left-[8rem] w-16 h-16 md:w-24 md:h-24">
                         <Image src="/assets/nuts/Almond1.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="decorative-image absolute top-[20%] right-[8%] w-20 h-20 md:w-32 md:h-32">
+                    <div className="decorative-image absolute top-[8rem] right-[10rem] w-20 h-20 md:w-32 md:h-32">
                         <Image src="/assets/nuts/Almond2.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="decorative-image absolute bottom-[15%] left-[15%] w-16 h-16 md:w-28 md:h-28">
+                    <div className="decorative-image absolute bottom-[10rem] left-[12rem] w-16 h-16 md:w-28 md:h-28">
                         <Image src="/assets/nuts/Almond3.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="decorative-image absolute bottom-[25%] right-[20%] w-14 h-14 md:w-20 md:h-20">
+                    <div className="decorative-image absolute bottom-[15rem] right-[15rem] w-14 h-14 md:w-20 md:h-20">
                         <Image src="/assets/nuts/Almond1.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="decorative-image absolute top-[45%] left-[2%] w-16 h-16 md:w-24 md:h-24">
+                    <div className="decorative-image absolute top-[25rem] left-[5rem] w-16 h-16 md:w-24 md:h-24">
                         <Image src="/assets/nuts/Almond2.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="decorative-image absolute top-[65%] right-[5%] w-20 h-20 md:w-28 md:h-28">
+                    <div className="decorative-image absolute top-[35rem] right-[8rem] w-20 h-20 md:w-28 md:h-28">
                         <Image src="/assets/nuts/Almond3.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="decorative-image absolute bottom-[10%] left-[40%] w-12 h-12 md:w-16 md:h-16">
+                    <div className="decorative-image absolute bottom-[8rem] left-[30rem] w-12 h-12 md:w-16 md:h-16">
                         <Image src="/assets/nuts/Almond3.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="decorative-image absolute top-[5%] right-[30%] w-14 h-14 md:w-20 md:h-20">
+                    <div className="decorative-image absolute top-[4rem] right-[25rem] w-14 h-14 md:w-20 md:h-20">
                         <Image src="/assets/nuts/Almond1.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                     <div className="decorative-image absolute bottom-[8%] left-[70%] w-12 h-12 md:w-16 md:h-16">
+                     <div className="decorative-image absolute bottom-[6rem] left-[45rem] w-12 h-12 md:w-16 md:h-16">
                         <Image src="/assets/nuts/Almond3.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="decorative-image absolute top-[8%] right-[60%] w-14 h-14 md:w-20 md:h-20">
+                    <div className="decorative-image absolute top-[6rem] right-[40rem] w-14 h-14 md:w-20 md:h-20">
                         <Image src="/assets/nuts/Almond1.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                     <div className="decorative-image absolute bottom-[50%] left-[80%] w-12 h-12 md:w-16 md:h-16">
+                     <div className="decorative-image absolute bottom-[25rem] left-[55rem] w-12 h-12 md:w-16 md:h-16">
                         <Image src="/assets/nuts/Almond3.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="decorative-image absolute top-[75%] right-[45%] w-14 h-14 md:w-20 md:h-20">
+                    <div className="decorative-image absolute top-[40rem] right-[30rem] w-14 h-14 md:w-20 md:h-20">
                         <Image src="/assets/nuts/Almond1.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
                     {/* Center-ish images */}
-                    <div className="decorative-image absolute top-[35%] left-[45%] w-12 h-12 md:w-16 md:h-16">
+                    <div className="decorative-image absolute top-[20rem] left-[35rem] w-12 h-12 md:w-16 md:h-16">
                         <Image src="/assets/nuts/Almond1.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="decorative-image absolute top-[55%] right-[40%] w-16 h-16 md:w-24 md:h-24">
+                    <div className="decorative-image absolute top-[30rem] right-[38rem] w-16 h-16 md:w-24 md:h-24">
                         <Image src="/assets/nuts/Almond2.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
-                    <div className="decorative-image absolute bottom-[30%] left-[30%] w-14 h-14 md:w-20 md:h-20">
+                    <div className="decorative-image absolute bottom-[20rem] left-[25rem] w-14 h-14 md:w-20 md:h-20">
                         <Image src="/assets/nuts/Almond2.png" alt="Decorative Almond" fill className="object-contain opacity-100" />
                     </div>
                 </div>
@@ -117,52 +136,20 @@ export default function Homepage() {
                     </div>
                     
                     <div className="grid md:grid-cols-3 gap-8">
-                        <div className="text-center p-8 rounded-2xl hover:shadow-lg transition-shadow duration-300" style={{background: 'linear-gradient(to bottom, #FFDE6A, #F5D554)'}}>
-                            <div className="w-24 h-24 rounded-full mx-auto mb-6 flex items-center justify-center" style={{backgroundColor: '#065598'}}>
-                                <span className="text-white text-2xl">
-                                    <Image src="/assets/section/Bocil.png" 
-                                    alt="Sustainable Sourcing" 
-                                    width={100} height={100} 
-                                    className='w-full h-auto'
-                                    />
-                                </span>
+                        <div className="p-2 rounded-2xl shadow-lg" style={{ backgroundColor: '#065598' }}>
+                            <div className="relative w-full h-96 rounded-xl overflow-hidden">
+                                <Image src="/assets/omg/aset1.jpg" alt="Sustainable Sourcing" fill className="object-cover" />
                             </div>
-                            <h3 className="text-xl font-bold mb-4" style={{color: '#065598'}}>Sustainable Sourcing</h3>
-                            <p className="text-gray-600">
-                                By choosing Sekotak, you&apos;re part of a story that starts long before the chocolate reaches you
-                            </p>
                         </div>
-                        
-                        <div className="text-center p-8 rounded-2xl hover:shadow-lg transition-shadow duration-full0" style={{background: 'linear-gradient(to bottom, #FFDE6A, #F5D554)'}}>
-                            <div className="w-24 h-24 rounded-full mx-auto mb-6 flex items-center justify-center" style={{backgroundColor: '#065598'}}>
-                                <span className="text-white text-2xl">
-                                     <Image src="/assets/section/Kucing.png" 
-                                    alt="Sustainable Sourcing" 
-                                    width={100} height={100} 
-                                    className='w-full h-auto'
-                                    />
-                                </span>
+                        <div className="p-2 rounded-2xl shadow-lg" style={{ backgroundColor: '#065598' }}>
+                            <div className="relative w-full h-96 rounded-xl overflow-hidden">
+                                <Image src="/assets/omg/aset2.jpg" alt="Premium Quality" fill className="object-cover" />
                             </div>
-                            <h3 className="text-xl font-bold mb-4" style={{color: '#065598'}}>Premium Quality</h3>
-                            <p className="text-gray-600">
-                                Experience the art of Indonesian Nama chocolate. We select only exceptional cacao beans to create our signature product
-                            </p>
                         </div>
-                        
-                        <div className="text-center p-8 rounded-2xl hover:shadow-lg transition-shadow duration-300" style={{background: 'linear-gradient(to bottom, #FFDE6A, #F5D554)'}}>
-                            <div className="w-24 h-24 rounded-full mx-auto mb-6 flex items-center justify-center" style={{backgroundColor: '#065598'}}>
-                                <span className="text-white text-2xl">
-                                     <Image src="/assets/section/Cocoa.png" 
-                                    alt="Sustainable Sourcing" 
-                                    width={100} height={100} 
-                                    className='w-30 h-auto'
-                                    />
-                                </span>
+                        <div className="p-2 rounded-2xl shadow-lg" style={{ backgroundColor: '#065598' }}>
+                            <div className="relative w-full h-96 rounded-xl overflow-hidden">
+                                <Image src="/assets/omg/aset3.jpg" alt="Made with Love" fill className="object-cover" />
                             </div>
-                            <h3 className="text-xl font-bold mb-4" style={{color: '#065598'}}>Made with Love</h3>
-                            <p className="text-gray-600">
-                                From our hands to yours. Every piece of Sekotak Chocolate is a testament to our passion
-                            </p>
                         </div>
                     </div>
                 </div>
@@ -170,6 +157,30 @@ export default function Homepage() {
 
             {/* Product Carousel */}
             <ProductCarousel products={products} onProductClick={setSelectedProduct} />
+
+            {/* Location Section */}
+            <section className="py-20 bg-gray-50">
+                <div className="max-w-6xl mx-auto px-4">
+                    <div className="text-center mb-16">
+                        <h2 className="text-4xl md:text-5xl font-bold mb-4 font-serif" style={{color: '#065598'}}>
+                            Our Location
+                        </h2>
+                        <p className="text-lg text-gray-600">
+                            Come visit us and discover your new favorite chocolate.
+                        </p>
+                    </div>
+                    <div className="relative w-full overflow-hidden rounded-2xl shadow-lg border-5 border-[#065598]" style={{ paddingTop: '56.25%' }}>
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.150448463541!2d110.811957775545!3d-7.558569874641297!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a175920a6e8a7%3A0x6abd0cc1d4299c03!2sSekotak%20Nama%20Chocolate!5e0!3m2!1sen!2sid!4v1753649989390!5m2!1sen!2sid" 
+                            className="absolute top-0 left-0 w-full h-full"
+                            style={{ border: 0 }} 
+                            allowFullScreen
+                            loading="lazy" 
+                            referrerPolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </section>
 
             {/* Product Detail Modal */}
             {selectedProduct && (
@@ -301,6 +312,41 @@ export default function Homepage() {
                     </div>
                 </div>
             )}
+            {/* Order Now Section */}
+            <section className="py-20 bg-gray-50">
+                <div className="max-w-6xl mx-auto px-4">
+                    <div className="text-center mb-16">
+                        <h2 className="text-4xl md:text-5xl font-bold mb-4 font-serif" style={{color: '#065598'}}>
+                            Order Your Chocolate
+                        </h2>
+                        <p className="text-lg text-gray-600">
+                            Get your favorite Nama chocolate delivered right to your doorstep.
+                        </p>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        {/* WhatsApp */}
+                        <a href="https://wa.me/YOUR_WHATSAPP_NUMBER" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center justify-center p-8 bg-white rounded-2xl shadow-lg border-2 border-[#25D366] hover:bg-[#25D366] transition-all duration-300 transform hover:-translate-y-2">
+                            <i className="fab fa-whatsapp text-6xl text-[#25D366] group-hover:text-white transition-colors duration-300"></i>
+                            <span className="mt-4 text-xl font-bold text-gray-800 group-hover:text-white transition-colors duration-300">WhatsApp</span>
+                        </a>
+                        {/* Tokopedia */}
+                        <a href="https://www.tokopedia.com/YOUR_STORE" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center justify-center p-8 bg-white rounded-2xl shadow-lg border-2 border-[#42b549] hover:bg-[#42b549] transition-all duration-300 transform hover:-translate-y-2">
+                            <i className="fas fa-store text-6xl text-[#42b549] group-hover:text-white transition-colors duration-300"></i>
+                            <span className="mt-4 text-xl font-bold text-gray-800 group-hover:text-white transition-colors duration-300">Tokopedia</span>
+                        </a>
+                        {/* GrabFood */}
+                        <a href="https://food.grab.com/YOUR_STORE" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center justify-center p-8 bg-white rounded-2xl shadow-lg border-2 border-[#00b14f] hover:bg-[#00b14f] transition-all duration-300 transform hover:-translate-y-2">
+                            <i className="fas fa-motorcycle text-6xl text-[#00b14f] group-hover:text-white transition-colors duration-300"></i>
+                            <span className="mt-4 text-xl font-bold text-gray-800 group-hover:text-white transition-colors duration-300">GrabFood</span>
+                        </a>
+                        {/* ShopeeFood */}
+                        <a href="https://shopeefood.co.id/YOUR_STORE" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center justify-center p-8 bg-white rounded-2xl shadow-lg border-2 border-[#ee4d2d] hover:bg-[#ee4d2d] transition-all duration-300 transform hover:-translate-y-2">
+                            <i className="fas fa-shopping-bag text-6xl text-[#ee4d2d] group-hover:text-white transition-colors duration-300"></i>
+                            <span className="mt-4 text-xl font-bold text-gray-800 group-hover:text-white transition-colors duration-300">ShopeeFood</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
 
             {/* CTA Section */}
             <section className="py-20 text-white" style={{backgroundColor: '#065598'}}>
@@ -321,7 +367,7 @@ export default function Homepage() {
                             style={{borderColor: '#FFDE6A'}}
                             onMouseEnter={(e) => {
                                 e.currentTarget.style.backgroundColor = '#FFDE6A';
-                                e.currentTarget.style.color = '#065598';
+                                e.currentTarget.style.color = 'black';
                             }}
                             onMouseLeave={(e) => {
                                 e.currentTarget.style.backgroundColor = 'transparent';
@@ -333,6 +379,9 @@ export default function Homepage() {
                     </div>
                 </div>
             </section>
+
+            {/* Order Now Section */}
+            
         </div>
     );
 }
