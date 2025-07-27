@@ -32,7 +32,7 @@ export default function Footer() {
     return (
         <footer ref={container} className="bg-gray-50 text-gray-800 py-12 px-4 sm:px-6 lg:px-8 overflow-hidden">
             <div className="max-w-7xl mx-auto">
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center text-center md:text-left">
                     {/* Mascot */}
                     <div className="md:col-span-3 flex justify-center md:justify-start animate-footer">
                         <Image src="/assets/section/Kucing.png" alt="Sekotak Chocolate Mascot" width={150} height={150} className="object-contain" />
@@ -43,22 +43,22 @@ export default function Footer() {
                         <div className="animate-footer">
                             <h3 className="font-bold text-lg mb-4">Our Chocolate</h3>
                             <ul className="space-y-2">
-                                <li><Link href="/products" className="hover:underline">Chocolate Collection</Link></li>
-                                <li><Link href="/products/nama" className="hover:underline">Nama Chocolate</Link></li>
+                                <li><Link href="/Product" className="hover:underline">Chocolate Collection</Link></li>
+                                <li><Link href="/Contacts" className="hover:underline">Contact Us</Link></li>
                             </ul>
                         </div>
                         <div className="animate-footer">
                             <h3 className="font-bold text-lg mb-4">Info</h3>
                             <ul className="space-y-2">
-                                <li><Link href="/story" className="hover:underline">Our Story</Link></li>
-                                <li><Link href="/faq" className="hover:underline">FAQ</Link></li>
+                                <li><Link href="/Story" className="hover:underline">Our Story</Link></li>
+                                <li><Link href="/FAQ" className="hover:underline">FAQ</Link></li>
                             </ul>
                         </div>
                     </div>
 
                     {/* Community */}
                     <div className="md:col-span-3 flex justify-center md:justify-end animate-footer">
-                        <a href="#" className="inline-block border-2 border-black rounded-full px-5 py-3 text-center font-semibold hover:bg-black hover:text-white transition-colors duration-300">
+                        <a href="https://www.instagram.com/sekotak" target="_blank" rel="noopener noreferrer" className="inline-block border-2 border-black rounded-full px-5 py-3 text-center font-semibold hover:bg-black hover:text-white transition-colors duration-300">
                             <div className="text-sm">Join the Community</div>
                             <div className="flex items-center justify-center gap-2 font-bold">
                                 <span>@sekotak</span>

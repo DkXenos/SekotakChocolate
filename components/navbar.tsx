@@ -93,9 +93,9 @@ export default function Navbar() {
                     {[
                         { href: "/", text: "Home" },
                         { href: "/Product", text: "Our Chocolate" },
-                        { href: "#", text: "Our Story" },
-                        { href: "#", text: "Contact Us" },
-                        { href: "#", text: "FAQ" }
+                        { href: "Story", text: "Our Story" },
+                        { href: "/Contacts", text: "Contact Us" },
+                        { href: "/FAQ", text: "FAQ" }                    
                     ].map((item, index) => (
                         <a 
                             key={item.text}

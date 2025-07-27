@@ -20,7 +20,7 @@ export default function Homepage() {
 
         // Smaller, fixed offsets to scatter assets AROUND the center
         const animationPresets = [
-            { x: 50, y: 40, rotation: -35 }, { x: -40, y: 30, rotation: 45 },
+            { x: -50, y: 40, rotation: -35 }, { x: -40, y: 30, rotation: 45 },
             { x: 60, y: -30, rotation: 25 }, { x: -50, y: -40, rotation: -50 },
             { x: 30, y: 50, rotation: 15 }, { x: -60, y: 40, rotation: -20 },
             { x: 40, y: -50, rotation: 60 }, { x: -35, y: -35, rotation: -10 },
@@ -362,7 +362,7 @@ export default function Homepage() {
                         className="text-black px-8 py-4 rounded-full text-lg font-semibold hover:opacity-90 transition-colors duration-300" style={{backgroundColor: '#FFDE6A'}}>
                             Explore Collection
                         </button>
-                        <button 
+                        <button onClick={() => window.location.href = '/FAQ'}
                             className="border-2 text-white px-8 py-4 rounded-full text-lg font-semibold transition-colors duration-300" 
                             style={{borderColor: '#FFDE6A'}}
                             onMouseEnter={(e) => {
