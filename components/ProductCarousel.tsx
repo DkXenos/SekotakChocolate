@@ -1,11 +1,7 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import { Draggable } from 'gsap/Draggable';
 import ProductCard from './ProductCard';
-
-// Register the Draggable plugin
-gsap.registerPlugin(Draggable);
 
 type Product = {
     id: number;
@@ -56,19 +52,25 @@ export default function ProductCarousel({ products, onProductClick }: ProductCar
             });
         };
 
-        // Set up GSAP Draggable
-        Draggable.create(carousel, {
-            type: "scrollLeft",
-            edgeResistance: 0.9, // Makes it feel "sticky" at the edges
-            onDragStart: () => {
-                // Kill the animation when the user starts dragging
-                gsap.killTweensOf(carousel);
-            },
-            onDragEnd: () => {
-                // When the user stops dragging, restart the animation from the current position
-                animate(carousel.scrollLeft);
-            }
-        });
+        // Dynamically import and set up GSAP Draggable only on the client side
+        if (typeof window !== 'undefined') {
+            import('gsap/Draggable').then(({ Draggable }) => {
+                gsap.registerPlugin(Draggable);
+                
+                Draggable.create(carousel, {
+                    type: "scrollLeft",
+                    edgeResistance: 0.9, // Makes it feel "sticky" at the edges
+                    onDragStart: () => {
+                        // Kill the animation when the user starts dragging
+                        gsap.killTweensOf(carousel);
+                    },
+                    onDragEnd: () => {
+                        // When the user stops dragging, restart the animation from the current position
+                        animate(carousel.scrollLeft);
+                    }
+                });
+            });
+        }
 
         // Start the initial animation
         animate();

@@ -5,27 +5,31 @@ import Link from 'next/link';
 import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function Footer() {
     const container = useRef(null);
 
     useGSAP(() => {
-        const elements = gsap.utils.toArray(".animate-footer");
+        if (typeof window === 'undefined') return;
 
-        gsap.from(elements, {
-            opacity: 0,
-            y: 50,
-            stagger: 0.2,
-            duration: 0.8,
-            ease: 'power3.out',
-            scrollTrigger: {
-                trigger: container.current,
-                start: 'top 90%',
-                toggleActions: 'play none none none',
-            }
+        // Dynamically import ScrollTrigger only on the client side
+        import('gsap/ScrollTrigger').then(({ ScrollTrigger }) => {
+            gsap.registerPlugin(ScrollTrigger);
+
+            const elements = gsap.utils.toArray(".animate-footer");
+
+            gsap.from(elements, {
+                opacity: 0,
+                y: 50,
+                stagger: 0.2,
+                duration: 0.8,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: container.current,
+                    start: 'top 90%',
+                    toggleActions: 'play none none none',
+                }
+            });
         });
     }, { scope: container });
 

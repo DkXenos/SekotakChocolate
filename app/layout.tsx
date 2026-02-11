@@ -1,3 +1,4 @@
+import '@/lib/polyfills';
 import type { Metadata } from "next";
 import "./globals.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -20,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body suppressHydrationWarning>
         <Navbar />
         <main>{children}</main>
         <Footer />

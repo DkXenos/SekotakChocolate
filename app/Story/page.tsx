@@ -5,29 +5,33 @@ import Link from "next/link";
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function StoryPage() {
   const container = useRef(null);
 
   useGSAP(
     () => {
-      // Animate each section as it enters the viewport
-      gsap.utils.toArray<HTMLElement>(".story-section").forEach((section) => {
-        const elems = section.querySelectorAll(".anim-element");
-        gsap.from(elems, {
-          opacity: 0,
-          y: 50,
-          stagger: 0.2,
-          duration: 0.8,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: section,
-            start: "top 85%",
-            toggleActions: "play none none none",
-          },
+      if (typeof window === 'undefined') return;
+
+      // Dynamically import ScrollTrigger only on the client side
+      import('gsap/ScrollTrigger').then(({ ScrollTrigger }) => {
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Animate each section as it enters the viewport
+        gsap.utils.toArray<HTMLElement>(".story-section").forEach((section) => {
+          const elems = section.querySelectorAll(".anim-element");
+          gsap.from(elems, {
+            opacity: 0,
+            y: 50,
+            stagger: 0.2,
+            duration: 0.8,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: section,
+              start: "top 85%",
+              toggleActions: "play none none none",
+            },
+          });
         });
       });
     },

@@ -6,9 +6,6 @@ import Image from 'next/image';
 import { Product, products } from '@/lib/products';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function Homepage() {
     const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
@@ -16,42 +13,47 @@ export default function Homepage() {
 
     useGSAP(() => {
         const hero = heroRef.current;
-        if (!hero) return;
+        if (!hero || typeof window === 'undefined') return;
 
-        // More varied and natural-looking offsets to scatter assets
-        const animationPresets = [
-            { x: 150, y: 120, rotation: -25 }, { x: -140, y: 130, rotation: 35 },
-            { x: 145, y: -120, rotation: 15 }, { x: -135, y: -125, rotation: -45 },
-            { x: 75, y: -140, rotation: 50 }, { x: -100, y: 75, rotation: -10 },
-            { x: 110, y: 90, rotation: 60 }, { x: -90, y: -110, rotation: -5 },
-            { x: 50, y: 75, rotation: 20 }, { x: -60, y: -50, rotation: -30 },
-            { x: 125, y: 50, rotation: 5 }, { x: -50, y: 125, rotation: -15 },
-            { x: 90, y: -75, rotation: 40 },
-        ];
+        // Dynamically import ScrollTrigger only on the client side
+        import('gsap/ScrollTrigger').then(({ ScrollTrigger }) => {
+            gsap.registerPlugin(ScrollTrigger);
 
-        gsap.utils.toArray<Element>(".decorative-image").forEach((image, index) => {
-            const preset = animationPresets[index % animationPresets.length];
+            // More varied and natural-looking offsets to scatter assets
+            const animationPresets = [
+                { x: 150, y: 120, rotation: -25 }, { x: -140, y: 130, rotation: 35 },
+                { x: 145, y: -120, rotation: 15 }, { x: -135, y: -125, rotation: -45 },
+                { x: 75, y: -140, rotation: 50 }, { x: -100, y: 75, rotation: -10 },
+                { x: 110, y: 90, rotation: 60 }, { x: -90, y: -110, rotation: -5 },
+                { x: 50, y: 75, rotation: 20 }, { x: -60, y: -50, rotation: -30 },
+                { x: 125, y: 50, rotation: 5 }, { x: -50, y: 125, rotation: -15 },
+                { x: 90, y: -75, rotation: 40 },
+            ];
 
-            // Calculate the vector to the center of the hero section
-            const centerX = (hero.clientWidth / 2) - (image.getBoundingClientRect().left + image.clientWidth / 2);
-            const centerY = (hero.clientHeight / 2) - (image.getBoundingClientRect().top + image.clientHeight / 2);
+            gsap.utils.toArray<Element>(".decorative-image").forEach((image, index) => {
+                const preset = animationPresets[index % animationPresets.length];
 
-            // Start from the center, plus the small, fixed offset
-            const startX = centerX + preset.x;
-            const startY = centerY + preset.y;
+                // Calculate the vector to the center of the hero section
+                const centerX = (hero.clientWidth / 2) - (image.getBoundingClientRect().left + image.clientWidth / 2);
+                const centerY = (hero.clientHeight / 2) - (image.getBoundingClientRect().top + image.clientHeight / 2);
 
-            // Animate from the fixed preset position to the final CSS position
-            gsap.from(image, {
-                x: startX,
-                y: startY,
-                rotation: preset.rotation,
-                ease: "power2.out",
-                scrollTrigger: {
-                    trigger: hero,
-                    start: "top top",
-                    end: "+=500",
-                    scrub: 1.5,
-                }
+                // Start from the center, plus the small, fixed offset
+                const startX = centerX + preset.x;
+                const startY = centerY + preset.y;
+
+                // Animate from the fixed preset position to the final CSS position
+                gsap.from(image, {
+                    x: startX,
+                    y: startY,
+                    rotation: preset.rotation,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: hero,
+                        start: "top top",
+                        end: "+=500",
+                        scrub: 1.5,
+                    }
+                });
             });
         });
     }, { scope: heroRef });
