@@ -2,6 +2,7 @@
 
 import Grainient from "../../components/Grainient";
 import InfiniteMenu from "../../components/InfiniteMenu";
+import SplitText from "../../components/SplitText";
 import { products } from "@/lib/products";
 
 export default function Homepage() {
@@ -21,7 +22,7 @@ export default function Homepage() {
             color1="#065598"
             color2="#6AABE5"
             color3="#D9D9D9"
-            timeSpeed={0.25}
+            timeSpeed={0.5}
             colorBalance={0}
             warpStrength={1}
             warpFrequency={5}
@@ -44,10 +45,20 @@ export default function Homepage() {
         </div>
 
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 font-serif">
-            Sekotak Chocolate
-          </h1>
-          <p className="text-xl md:text-2xl text-white/90 mb-8">
+          <SplitText
+            text="Sekotak Chocolate"
+            className="text-6xl md:text-8xl font-bold text-white mb-6 font-serif drop-shadow-2xl"
+            delay={80}
+            duration={1}
+            ease="power3.out"
+            splitType="chars"
+            from={{ opacity: 0, y: 50 }}
+            to={{ opacity: 1, y: 0 }}
+            threshold={0.1}
+            rootMargin="-50px"
+            textAlign="center"
+          />
+          <p className="text-xl md:text-2xl text-white/90 mb-8 drop-shadow-lg">
             Premium Artisanal Nama Chocolate
           </p>
         </div>
@@ -66,25 +77,28 @@ export default function Homepage() {
       </section>
 
       {/* Product Showcase Section */}
-      <section 
-        className="relative overflow-hidden py-12 bg-gradient-to-b from-white to-gray-50"
-      >
-        <div className="py-12 px-4 text-center relative z-10">
+      <section className="relative py-20 bg-white overflow-hidden">
+        <div className="py-12 px-4 text-center">
           <h2 
             className="text-4xl md:text-5xl font-bold mb-4 font-serif"
             style={{ color: "#065598" }}
           >
             Our Chocolate Collection
           </h2>
-          <p className="text-lg text-gray-700 max-w-2xl mx-auto mb-8">
+          <p className="text-lg text-gray-700 max-w-2xl mx-auto mb-12">
             Discover our exquisite range of handcrafted nama chocolates
           </p>
         </div>
         
-        <div className="flex justify-center items-center px-4 relative z-10">
+        <div className="flex justify-center items-center px-4 pb-12">
           <div 
-            className="bg-white rounded-3xl shadow-2xl overflow-hidden"
-            style={{ width: "800px", height: "600px", maxWidth: "90vw" }}
+            className="bg-white rounded-2xl overflow-hidden border-8"
+            style={{ 
+              width: "800px", 
+              height: "600px", 
+              maxWidth: "90vw",
+              borderColor: "#065598"
+            }}
           >
             <InfiniteMenu items={productItems} scale={1} />
           </div>
