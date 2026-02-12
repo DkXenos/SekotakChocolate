@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import Grainient from "../../components/Grainient";
 import InfiniteMenu from "../../components/InfiniteMenu";
-import SplitText from "../../components/SplitText";
+import ScrollFloat from "../../components/ScrollFloat";
+import LoadingScreen from "../../components/LoadingScreen";
 import { products } from "@/lib/products";
 
 export default function Homepage() {
@@ -16,50 +16,15 @@ export default function Homepage() {
 
   return (
     <>
-      {/* Hero Section with Grainient Background */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full z-0">
-          <Grainient
-            color1="#065598"
-            color2="#6AABE5"
-            color3="#D9D9D9"
-            timeSpeed={0.5}
-            colorBalance={0}
-            warpStrength={1}
-            warpFrequency={5}
-            warpSpeed={2}
-            warpAmplitude={50}
-            blendAngle={0}
-            blendSoftness={0.05}
-            rotationAmount={500}
-            noiseScale={1.6}
-            grainAmount={0}
-            grainScale={2}
-            grainAnimated={false}
-            contrast={1.5}
-            gamma={1}
-            saturation={1}
-            centerX={0}
-            centerY={0}
-            zoom={0.9}
-          />
-        </div>
+      <LoadingScreen text="Sekotak Chocolate" />
 
+      {/* Hero Section */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-white">
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          <SplitText
-            text="Sekotak Chocolate"
-            className="text-6xl md:text-8xl font-bold text-white mb-6 font-serif drop-shadow-2xl"
-            delay={80}
-            duration={1}
-            ease="power3.out"
-            splitType="chars"
-            from={{ opacity: 0, y: 50 }}
-            to={{ opacity: 1, y: 0 }}
-            threshold={0.1}
-            rootMargin="-50px"
-            textAlign="center"
-          />
-          <p className="text-xl md:text-2xl text-white/90 mb-8 drop-shadow-lg">
+          <h1 className="text-6xl md:text-8xl font-bold mb-6 font-serif" style={{ color: "#065598" }}>
+            Sekotak Chocolate
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-700 mb-8">
             Premium Artisanal Nama Chocolate
           </p>
         </div>
@@ -67,11 +32,11 @@ export default function Homepage() {
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
           <div
             className="w-6 h-10 border-2 rounded-full flex justify-center"
-            style={{ borderColor: "#FFECBA" }}
+            style={{ borderColor: "#065598" }}
           >
             <div
               className="w-1 h-3 rounded-full mt-2"
-              style={{ backgroundColor: "#FFECBA" }}
+              style={{ backgroundColor: "#065598" }}
             ></div>
           </div>
         </div>
@@ -84,7 +49,15 @@ export default function Homepage() {
             className="text-4xl md:text-5xl font-bold mb-4 font-serif"
             style={{ color: "#065598" }}
           >
-            Our Chocolate Collection
+            <ScrollFloat
+              animationDuration={1}
+              ease='back.inOut(2)'
+              scrollStart='center bottom+=50%'
+              scrollEnd='bottom bottom-=40%'
+              stagger={0.05}
+            >
+              Our Chocolate Collection
+            </ScrollFloat>
           </h2>
           <p className="text-lg text-gray-700 max-w-2xl mx-auto mb-12">
             Discover our exquisite range of handcrafted nama chocolates
@@ -111,7 +84,15 @@ export default function Homepage() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 font-serif" style={{color: '#065598'}}>
-              Why Choose Sekotak Chocolate?
+              <ScrollFloat
+                animationDuration={1}
+                ease='back.inOut(2)'
+                scrollStart='center bottom+=50%'
+                scrollEnd='bottom bottom-=40%'
+                stagger={0.05}
+              >
+                Why Choose Sekotak Chocolate?
+              </ScrollFloat>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Every bar tells a story of quality, sustainability, and exceptional taste
@@ -143,7 +124,15 @@ export default function Homepage() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 font-serif" style={{color: '#065598'}}>
-              Our Location
+              <ScrollFloat
+                animationDuration={1}
+                ease='back.inOut(2)'
+                scrollStart='center bottom+=50%'
+                scrollEnd='bottom bottom-=40%'
+                stagger={0.05}
+              >
+                Our Location
+              </ScrollFloat>
             </h2>
             <p className="text-lg text-gray-600">
               Come visit us and discover your new favorite chocolate.
@@ -167,7 +156,15 @@ export default function Homepage() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 font-serif" style={{color: '#065598'}}>
-              Order Your Chocolate
+              <ScrollFloat
+                animationDuration={1}
+                ease='back.inOut(2)'
+                scrollStart='center bottom+=50%'
+                scrollEnd='bottom bottom-=40%'
+                stagger={0.05}
+              >
+                Order Your Chocolate
+              </ScrollFloat>
             </h2>
             <p className="text-lg text-gray-600">
               Get your favorite Nama chocolate delivered right to your doorstep.
