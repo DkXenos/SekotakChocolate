@@ -1,18 +1,19 @@
 "use client";
 
 import Image from "next/image";
-import InfiniteMenu from "../../components/InfiniteMenu";
+import { useRouter } from "next/navigation";
 import ScrollFloat from "../../components/ScrollFloat";
 import LoadingScreen from "../../components/LoadingScreen";
-import { products } from "@/lib/products";
+import ProductCircularGallery from "../../components/ProductCircularGallery";
+import { products, Product } from "@/lib/products";
+
 
 export default function Homepage() {
-  const productItems = products.map((product) => ({
-    image: product.image,
-    link: `/Product#${product.id}`,
-    title: product.name,
-    description: product.shortDesc,
-  }));
+  const router = useRouter();
+
+  const handleProductClick = (product: Product) => {
+    router.push(`/Product#${product.id}`);
+  };
 
   return (
     <>
@@ -43,41 +44,10 @@ export default function Homepage() {
       </section>
 
       {/* Product Showcase Section */}
-      <section className="relative py-20 bg-white overflow-hidden">
-        <div className="py-12 px-4 text-center">
-          <h2 
-            className="text-4xl md:text-5xl font-bold mb-4 font-serif"
-            style={{ color: "#065598" }}
-          >
-            <ScrollFloat
-              animationDuration={1}
-              ease='back.inOut(2)'
-              scrollStart='center bottom+=50%'
-              scrollEnd='bottom bottom-=40%'
-              stagger={0.05}
-            >
-              Our Chocolate Collection
-            </ScrollFloat>
-          </h2>
-          <p className="text-lg text-gray-700 max-w-2xl mx-auto mb-12">
-            Discover our exquisite range of handcrafted nama chocolates
-          </p>
-        </div>
-        
-        <div className="flex justify-center items-center px-4 pb-12">
-          <div 
-            className="bg-white rounded-2xl overflow-hidden border-8"
-            style={{ 
-              width: "800px", 
-              height: "600px", 
-              maxWidth: "90vw",
-              borderColor: "#065598"
-            }}
-          >
-            <InfiniteMenu items={productItems} scale={1} />
-          </div>
-        </div>
-      </section>
+      <ProductCircularGallery 
+        products={products} 
+        onProductClick={handleProductClick}
+      />
 
       {/* Features Section */}
       <section className="py-20 px-4 bg-gray-50">
