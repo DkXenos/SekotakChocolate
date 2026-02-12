@@ -103,7 +103,7 @@ export default function Navbar() {
                     bgColor="#ffffff"
                     marqueeBgColor="#FFECBA"
                     marqueeTextColor="#065598"
-                    borderColor="#065598"
+                    borderColor="#ffffff"
                 />
             </div>
         </div>
