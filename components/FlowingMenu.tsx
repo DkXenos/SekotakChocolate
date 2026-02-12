@@ -37,7 +37,7 @@ const FlowingMenu: React.FC<FlowingMenuProps> = ({
 }) => {
   return (
     <div className="w-full h-full overflow-hidden" style={{ backgroundColor: bgColor }}>
-      <nav className="flex flex-col m-0 p-0">
+      <nav className="flex flex-col h-full m-0 p-0">
         {items.map((item, idx) => (
           <MenuItem
             key={idx}
@@ -150,12 +150,12 @@ const MenuItem: React.FC<MenuItemProps> = ({
 
   return (
     <div
-      className="relative overflow-hidden text-center h-24"
+      className="flex-1 relative overflow-hidden text-center"
       ref={itemRef}
       style={{ borderTop: isFirst ? 'none' : `1px solid ${borderColor}` }}
     >
       <a
-        className="flex items-center justify-center h-full relative cursor-pointer uppercase no-underline font-semibold text-2xl"
+        className="flex items-center justify-center h-full relative cursor-pointer uppercase no-underline font-semibold text-[4vh]"
         href={link}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -171,9 +171,9 @@ const MenuItem: React.FC<MenuItemProps> = ({
         <div className="h-full w-fit flex" ref={marqueeInnerRef}>
           {[...Array(repetitions)].map((_, idx) => (
             <div className="marquee-part flex items-center flex-shrink-0" key={idx} style={{ color: marqueeTextColor }}>
-              <span className="whitespace-nowrap uppercase font-normal text-2xl leading-[1] px-4">{text}</span>
+              <span className="whitespace-nowrap uppercase font-normal text-[4vh] leading-[1] px-[1vw]">{text}</span>
               <div
-                className="w-32 h-16 my-4 mx-6 rounded-[50px] bg-cover bg-center"
+                className="w-[200px] h-[7vh] my-[2em] mx-[2vw] py-[1em] rounded-[50px] bg-cover bg-center"
                 style={{ backgroundImage: `url(${image})` }}
               />
             </div>
