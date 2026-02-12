@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import GlassSurface from "../../components/GlassSurface";
 import ScrollFloat from "../../components/ScrollFloat";
 import LoadingScreen from "../../components/LoadingScreen";
 import ProductCircularGallery from "../../components/ProductCircularGallery";
@@ -58,19 +59,33 @@ export default function Homepage() {
         </div>
 
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          <h1
-            className="text-6xl md:text-8xl font-bold mb-6 font-serif"
-            style={{
-              color: "#065598",
-              //   WebkitTextStroke: "4px #ffffff",
-              //   paintOrder: "stroke fill"
-            }}
+          <GlassSurface
+            width="100%"
+            height="auto"
+            borderRadius={30}
+            className="p-10"
+            opacity={0.5}
+            blur={40}
+            borderWidth={1}
+            // slight white tint to ensure contrast if background gets busy
+            mixBlendMode="normal" 
           >
-            Sekotak Chocolate
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-700 mb-8">
-            Premium Artisanal Nama Chocolate
-          </p>
+            <div className="flex flex-col items-center justify-center w-full">
+              <h1
+                className="text-6xl md:text-8xl font-bold mb-6 font-serif"
+                style={{
+                  color: "#065598",
+                  //   WebkitTextStroke: "4px #ffffff",
+                  //   paintOrder: "stroke fill"
+                }}
+              >
+                Sekotak Chocolate
+              </h1>
+              <p className="text-xl md:text-2xl text-gray-700">
+                Premium Artisanal Nama Chocolate
+              </p>
+            </div>
+          </GlassSurface>
         </div>
 
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-10">

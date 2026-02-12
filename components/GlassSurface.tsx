@@ -65,15 +65,15 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
   borderRadius = 20,
   borderWidth = 0.07,
   brightness = 50,
-  opacity = 0.93,
-  blur = 11,
-  displace = 0,
-  backgroundOpacity = 0,
+  opacity = 0.3,
+  blur = 50,
+  displace = 2,
+  backgroundOpacity = 0.05,
   saturation = 1,
-  distortionScale = -180,
-  redOffset = 0,
-  greenOffset = 10,
-  blueOffset = 20,
+  distortionScale = 30,
+  redOffset = 5,
+  greenOffset = 0,
+  blueOffset = 0,
   xChannel = 'R',
   yChannel = 'G',
   mixBlendMode = 'difference',
@@ -86,6 +86,7 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
   const blueGradId = `blue-grad-${uniqueId}`;
 
   const [svgSupported, setSvgSupported] = useState<boolean>(false);
+  const [backdropFilterSupported, setBackdropFilterSupported] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const feImageRef = useRef<SVGFEImageElement>(null);
@@ -166,6 +167,12 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
   }, []);
 
   useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setBackdropFilterSupported(CSS.supports('backdrop-filter', 'blur(10px)'));
+    }
+  }, []);
+
+  useEffect(() => {
     if (!containerRef.current) return;
 
     const resizeObserver = new ResizeObserver(() => {
@@ -215,11 +222,6 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
     return div.style.backdropFilter !== '';
   };
 
-  const supportsBackdropFilter = () => {
-    if (typeof window === 'undefined') return false;
-    return CSS.supports('backdrop-filter', 'blur(10px)');
-  };
-
   const getContainerStyles = (): React.CSSProperties => {
     const baseStyles: React.CSSProperties = {
       ...style,
@@ -229,8 +231,6 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
       '--glass-frost': backgroundOpacity,
       '--glass-saturation': saturation
     } as React.CSSProperties;
-
-    const backdropFilterSupported = supportsBackdropFilter();
 
     if (svgSupported) {
       return {
