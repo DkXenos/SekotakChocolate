@@ -17,14 +17,23 @@ export default function Homepage() {
 
   // GridMotion items using local assets as JSX elements
   const imagePaths = [
-    "/assets/products/matcha.png",
-    "/assets/products/almond.png",
-    "/assets/products/darkc.png",
-    "/assets/products/oreo.png",
-    "/assets/products/salted.png",
-    "/assets/products/cashew.png",
+    // "/assets/products/matcha.png",
+    // "/assets/products/almond.png",
+    // "/assets/products/darkc.png",
+    // "/assets/products/oreo.png",
+    // "/assets/products/salted.png",
+    // "/assets/products/cashew.png",
+    "/assets/bocil/kucing1.png",
+    "/assets/bocil/cocoa1.png",
+    "/assets/bocil/bocil1.png",
+    "/assets/bocil/kucing2.png",
+    "/assets/bocil/bocil2.png",
+    "/assets/bocil/cocoa2.png",
+    "/assets/bocil/kucing3.png",
+    "/assets/bocil/bocil3.png",
+    "/assets/bocil/cocoa3.png",
   ];
-  
+
   const gridItems = Array.from({ length: 30 }, (_, i) => (
     <div key={`grid-item-${i}`} className="relative w-full h-full">
       <Image
@@ -44,17 +53,17 @@ export default function Homepage() {
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden bg-white">
         {/* GridMotion Background */}
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 bg-white">
           <GridMotion items={gridItems} gradientColor="white" />
         </div>
 
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <h1
             className="text-6xl md:text-8xl font-bold mb-6 font-serif"
-            style={{ 
+            style={{
               color: "#065598",
-            //   WebkitTextStroke: "4px #ffffff",
-            //   paintOrder: "stroke fill"
+              //   WebkitTextStroke: "4px #ffffff",
+              //   paintOrder: "stroke fill"
             }}
           >
             Sekotak Chocolate
