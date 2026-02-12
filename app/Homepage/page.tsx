@@ -51,7 +51,11 @@ export default function Homepage() {
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <h1
             className="text-6xl md:text-8xl font-bold mb-6 font-serif"
-            style={{ color: "#065598" }}
+            style={{ 
+              color: "#065598",
+            //   WebkitTextStroke: "4px #ffffff",
+            //   paintOrder: "stroke fill"
+            }}
           >
             Sekotak Chocolate
           </h1>
@@ -97,7 +101,7 @@ export default function Homepage() {
                 Why Choose Sekotak Chocolate?
               </ScrollFloat>
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <div className="text-lg text-gray-600 max-w-2xl mx-auto">
               <ScrollFloat
                 animationDuration={1}
                 ease="back.inOut(2)"
@@ -108,7 +112,7 @@ export default function Homepage() {
                 Every bar tells a story of quality, sustainability, and
                 exceptional taste
               </ScrollFloat>
-            </p>
+            </div>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -173,7 +177,7 @@ export default function Homepage() {
                 Our Location
               </ScrollFloat>
             </h2>
-            <p className="text-lg text-gray-600">
+            <div className="text-lg text-gray-600">
               <ScrollFloat
                 animationDuration={1}
                 ease="back.inOut(2)"
@@ -183,7 +187,7 @@ export default function Homepage() {
               >
                 Come visit us and discover your new favorite chocolate.
               </ScrollFloat>
-            </p>
+            </div>
           </div>
           <div
             className="relative w-full overflow-hidden rounded-2xl shadow-lg border-8"

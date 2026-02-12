@@ -54,7 +54,7 @@ export default function ProductCircularGallery({
             Our Chocolate Collection
           </ScrollFloat>
         </h2>
-        <p className="text-lg text-gray-700 max-w-2xl mx-auto mb-12">
+        <div className="text-lg text-gray-700 max-w-2xl mx-auto mb-12">
           <ScrollFloat
             animationDuration={1}
             ease="back.inOut(2)"
@@ -64,7 +64,7 @@ export default function ProductCircularGallery({
           >
             Discover our exquisite range of handcrafted nama chocolates
           </ScrollFloat>
-        </p>
+        </div>
       </div>
 
       <div className="flex justify-center items-center px-4 pb-12">

@@ -9,7 +9,6 @@ interface GridMotionProps {
 const GridMotion: FC<GridMotionProps> = ({ items = [], gradientColor = 'black' }) => {
   const gridRef = useRef<HTMLDivElement>(null);
   const rowRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const mouseXRef = useRef<number>(window.innerWidth / 2);
 
   const totalItems = 28;
   const defaultItems = Array.from({ length: totalItems }, (_, index) => `Item ${index + 1}`);
@@ -18,19 +17,19 @@ const GridMotion: FC<GridMotionProps> = ({ items = [], gradientColor = 'black' }
   useEffect(() => {
     gsap.ticker.lagSmoothing(0);
 
-    const handleMouseMove = (e: MouseEvent): void => {
-      mouseXRef.current = e.clientX;
-    };
-
     const updateMotion = (): void => {
-      const maxMoveAmount = 300;
+      const maxMoveAmount = 600; // Increased range for scrolling
       const baseDuration = 0.8;
       const inertiaFactors = [0.6, 0.4, 0.3, 0.2];
+      
+      // Calculate scroll progress (0 at top, increasing as we scroll down)
+      // Normalized roughly by viewport height
+      const scrollProgress = typeof window !== 'undefined' ? window.scrollY / window.innerHeight : 0;
 
       rowRefs.current.forEach((row, index) => {
         if (row) {
           const direction = index % 2 === 0 ? 1 : -1;
-          const moveAmount = ((mouseXRef.current / window.innerWidth) * maxMoveAmount - maxMoveAmount / 2) * direction;
+          const moveAmount = (scrollProgress * maxMoveAmount) * direction;
 
           gsap.to(row, {
             x: moveAmount,
@@ -43,10 +42,8 @@ const GridMotion: FC<GridMotionProps> = ({ items = [], gradientColor = 'black' }
     };
 
     const removeAnimationLoop = gsap.ticker.add(updateMotion);
-    window.addEventListener('mousemove', handleMouseMove);
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
       removeAnimationLoop();
     };
   }, []);
