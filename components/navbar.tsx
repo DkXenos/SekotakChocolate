@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import FlowingMenu from './FlowingMenu';
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -80,39 +81,30 @@ export default function Navbar() {
                 </div>
             </nav>
 
-            {/* Dropdown Menu */}
+            {/* Flowing Menu */}
             <div 
-                className={`fixed inset-0 bg-white flex flex-col items-center justify-start pt-12 z-40 transition-all duration-300 ease-in-out ${
+                className={`fixed inset-0 z-40 transition-all duration-500 ease-in-out ${
                     isMenuOpen 
                         ? 'opacity-100 translate-y-0' 
                         : 'opacity-0 -translate-y-full pointer-events-none'
                 }`} 
-                style={{top: '5rem'}}
+                style={{top: '5rem', height: 'calc(100vh - 5rem)'}}
             >
-                <div className="text-center space-y-6">
-                    {[
-                        { href: "/", text: "Home" },
-                        { href: "/Product", text: "Our Chocolate" },
-                        { href: "Story", text: "Our Story" },
-                        { href: "/Contacts", text: "Contact Us" },
-                        { href: "/FAQ", text: "FAQ" }                    
-                    ].map((item, index) => (
-                        <a 
-                            key={item.text}
-                            href={item.href} 
-                            className={`block text-4xl font-serif text-gray-800 hover:text-[#065598] transition-all duration-300 transform ${
-                                isMenuOpen 
-                                    ? 'translate-y-0 opacity-100' 
-                                    : 'translate-y-4 opacity-0'
-                            }`}
-                            style={{
-                                transitionDelay: isMenuOpen ? `${index * 100}ms` : '0ms'
-                            }}
-                        >
-                            {item.text}
-                        </a>
-                    ))}
-                </div>
+                <FlowingMenu 
+                    items={[
+                        { link: "/", text: "Home", image: "/assets/omg/aset1.jpg" },
+                        { link: "/Product", text: "Our Chocolate", image: "/assets/products/almond.png" },
+                        { link: "/Story", text: "Our Story", image: "/assets/omg/aset2.jpg" },
+                        { link: "/Contacts", text: "Contact Us", image: "/assets/omg/aset3.jpg" },
+                        { link: "/FAQ", text: "FAQ", image: "/assets/products/matcha.png" }
+                    ]}
+                    speed={15}
+                    textColor="#065598"
+                    bgColor="#ffffff"
+                    marqueeBgColor="#FFECBA"
+                    marqueeTextColor="#065598"
+                    borderColor="#065598"
+                />
             </div>
         </div>
     );
