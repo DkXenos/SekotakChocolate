@@ -23,7 +23,7 @@ type ProductCircularGalleryProps = {
 
 export default function ProductCircularGallery({
   products,
-  onProductClick,
+  // onProductClick,
 }: ProductCircularGalleryProps) {
   // Map products to the format CircularGallery expects
   const galleryItems = products.map((product) => ({
@@ -32,10 +32,10 @@ export default function ProductCircularGallery({
   }));
 
   // Handle clicks on gallery items by finding the corresponding product
-  const handleGalleryClick = (index: number) => {
-    const productIndex = index % products.length;
-    onProductClick(products[productIndex]);
-  };
+  // const _handleGalleryClick = (index: number) => {
+  //   const productIndex = index % products.length;
+  //   onProductClick(products[productIndex]);
+  // };
 
   return (
     <section className="relative py-20 bg-white overflow-hidden">

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import ProductCard from './ProductCard';
@@ -54,7 +54,7 @@ export default function ProductCarousel({ products, onProductClick }: ProductCar
 
         // Dynamically import and set up GSAP Draggable only on the client side
         if (typeof window !== 'undefined') {
-            import('gsap/Draggable').then(({ Draggable }) => {
+            import('gsap/all').then(({ Draggable }) => {
                 gsap.registerPlugin(Draggable);
                 
                 Draggable.create(carousel, {
