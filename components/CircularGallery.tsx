@@ -382,6 +382,7 @@ interface AppConfig {
   font?: string;
   scrollSpeed?: number;
   scrollEase?: number;
+  onCenterChange?: (index: number) => void;
 }
 
 class App {
@@ -414,6 +415,8 @@ class App {
 
   isDown: boolean = false;
   start: number = 0;
+  onCenterChange?: (index: number) => void;
+  currentCenterIndex: number = 0;
 
   constructor(
     container: HTMLElement,
@@ -424,7 +427,8 @@ class App {
       borderRadius = 0,
       font = 'bold 30px Figtree',
       scrollSpeed = 2,
-      scrollEase = 0.05
+      scrollEase = 0.05,
+      onCenterChange
     }: AppConfig
   ) {
     document.documentElement.classList.remove('no-js');
@@ -432,6 +436,7 @@ class App {
     this.scrollSpeed = scrollSpeed;
     this.scroll = { ease: scrollEase, current: 0, target: 0, last: 0 };
     this.onCheckDebounce = debounce(this.onCheck.bind(this), 200);
+    this.onCenterChange = onCenterChange;
     this.createRenderer();
     this.createCamera();
     this.createScene();
@@ -605,6 +610,17 @@ class App {
     const direction = this.scroll.current > this.scroll.last ? 'right' : 'left';
     if (this.medias) {
       this.medias.forEach(media => media.update(this.scroll, direction));
+      
+      // Calculate centered item and notify if changed
+      if (this.medias[0] && this.onCenterChange) {
+        const width = this.medias[0].width;
+        const centerIndex = Math.round(Math.abs(this.scroll.current) / width);
+        const actualIndex = centerIndex % (this.medias.length / 2);
+        if (actualIndex !== this.currentCenterIndex) {
+          this.currentCenterIndex = actualIndex;
+          this.onCenterChange(actualIndex);
+        }
+      }
     }
     this.renderer.render({ scene: this.scene, camera: this.camera });
     this.scroll.last = this.scroll.current;
@@ -653,6 +669,7 @@ interface CircularGalleryProps {
   font?: string;
   scrollSpeed?: number;
   scrollEase?: number;
+  onCenterChange?: (index: number) => void;
 }
 
 export default function CircularGallery({
@@ -662,7 +679,8 @@ export default function CircularGallery({
   borderRadius = 0.05,
   font = 'bold 30px Figtree',
   scrollSpeed = 2,
-  scrollEase = 0.05
+  scrollEase = 0.05,
+  onCenterChange
 }: CircularGalleryProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -674,11 +692,12 @@ export default function CircularGallery({
       borderRadius,
       font,
       scrollSpeed,
-      scrollEase
+      scrollEase,
+      onCenterChange
     });
     return () => {
       app.destroy();
     };
-  }, [items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase]);
+  }, [items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase, onCenterChange]);
   return <div className="w-full h-full overflow-hidden cursor-grab active:cursor-grabbing" ref={containerRef} />;
 }
