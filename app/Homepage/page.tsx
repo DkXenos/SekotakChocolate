@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import GlassSurface from "../../components/GlassSurface";
@@ -11,6 +12,7 @@ import { products, Product } from "@/lib/products";
 
 export default function Homepage() {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleProductClick = (product: Product) => {
     router.push(`/Product#${product.id}`);
@@ -49,14 +51,20 @@ export default function Homepage() {
 
   return (
     <>
-      <LoadingScreen text="Sekotak Chocolate" />
+      <LoadingScreen 
+        text="Sekotak Chocolate" 
+        onComplete={() => setIsLoading(false)}
+      />
 
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-white">
-        {/* GridMotion Background */}
-        <div className="absolute inset-0 z-0 bg-white">
-          <GridMotion items={gridItems} gradientColor="white" />
-        </div>
+      <div style={{ opacity: isLoading ? 0 : 1, transition: 'opacity 0.3s ease-in' }}>
+        {/* Hero Section */}
+        <section 
+          className="relative h-screen flex items-center justify-center overflow-hidden bg-white"
+        >
+          {/* GridMotion Background */}
+          <div className="absolute inset-0 z-0 bg-white">
+            <GridMotion items={gridItems} gradientColor="white" />
+          </div>
 
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <GlassSurface
@@ -351,6 +359,7 @@ export default function Homepage() {
           </div>
         </div>
       </section>
+      </div>
     </>
   );
 }

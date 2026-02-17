@@ -14,26 +14,20 @@ export default function LoadingScreen({
   onComplete 
 }: LoadingScreenProps) {
   const [isVisible, setIsVisible] = useState(true);
-  const [fadeIn, setFadeIn] = useState(false);
+  const [fadeIn, setFadeIn] = useState(true); // Start immediately visible
 
   useEffect(() => {
-    // Fade in the loading screen
-    const fadeInTimer = setTimeout(() => {
-      setFadeIn(true);
-    }, 100);
-
     // Wait for animation to complete before hiding loading screen
     const fadeOutTimer = setTimeout(() => {
       setFadeIn(false);
-    }, 2300);
+    }, 2200);
 
     const hideTimer = setTimeout(() => {
       setIsVisible(false);
       onComplete?.();
-    }, 2800);
+    }, 2700);
 
     return () => {
-      clearTimeout(fadeInTimer);
       clearTimeout(fadeOutTimer);
       clearTimeout(hideTimer);
     };
@@ -42,7 +36,7 @@ export default function LoadingScreen({
   if (!isVisible) return null;
 
   return (
-    <div className={`fixed inset-0 z-50 flex items-center justify-center transition-opacity duration-700 ${fadeIn ? 'opacity-100' : 'opacity-0'}`}>
+    <div className={`fixed inset-0 z-[100] flex items-center justify-center transition-opacity duration-700 ${fadeIn ? 'opacity-100' : 'opacity-0'}`}>
       <div className="absolute top-0 left-0 w-full h-full">
         <Grainient
           color1="#065598"
