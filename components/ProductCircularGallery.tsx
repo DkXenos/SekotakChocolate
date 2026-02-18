@@ -38,11 +38,11 @@ export default function ProductCircularGallery({
     node: (
       <div
         key={product.id}
-        className="flex flex-col items-center justify-center cursor-pointer transition-transform duration-300"
+        className="flex flex-col items-center justify-center cursor-pointer"
         onClick={() => setSelectedProduct(product)}
       >
         <div
-          className="rounded-2xl flex items-center justify-center p-6 shadow-lg transition-all duration-300 hover:scale-105"
+          className="rounded-2xl flex items-center justify-center p-6 shadow-lg overflow-hidden"
           style={{
             backgroundColor: product.bgColor,
             width: "240px",
@@ -55,7 +55,7 @@ export default function ProductCircularGallery({
             alt={product.name}
             width={180}
             height={180}
-            className="object-contain"
+            className="object-contain transition-transform duration-300 hover:scale-110"
           />
         </div>
         <h3 className="mt-4 text-xl font-bold text-gray-800 text-center">

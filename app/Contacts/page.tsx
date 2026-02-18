@@ -66,22 +66,18 @@ export default function ContactPage() {
                         <h2 className="text-3xl font-bold text-gray-800">Order for Delivery</h2>
                         <p className="text-gray-600 mt-2">Get your favorite chocolate delivered to your door.</p>
                     </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center justify-center p-8 bg-white rounded-2xl shadow-lg border-2 border-[#25D366] hover:bg-[#25D366] transition-all duration-300 transform hover:-translate-y-2">
-                            <i className="fab fa-whatsapp text-6xl text-[#25D366] group-hover:text-white transition-colors duration-300"></i>
-                            <span className="mt-4 text-xl font-bold text-gray-800 group-hover:text-white transition-colors duration-300">WhatsApp</span>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center py-6 px-8 bg-white rounded-2xl border-2 hover:bg-gray-50 transition-all duration-300" style={{ borderColor: "#065598" }}>
+                            <span className="text-xl font-semibold" style={{ color: "#065598" }}>WhatsApp</span>
                         </a>
-                        <a href="https://www.tokopedia.com/sekotak" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center justify-center p-8 bg-white rounded-2xl shadow-lg border-2 border-[#42b549] hover:bg-[#42b549] transition-all duration-300 transform hover:-translate-y-2">
-                            <i className="fas fa-store text-6xl text-[#42b549] group-hover:text-white transition-colors duration-300"></i>
-                            <span className="mt-4 text-xl font-bold text-gray-800 group-hover:text-white transition-colors duration-300">Tokopedia</span>
+                        <a href="https://www.tokopedia.com/sekotak" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center py-6 px-8 bg-white rounded-2xl border-2 hover:bg-gray-50 transition-all duration-300" style={{ borderColor: "#065598" }}>
+                            <span className="text-xl font-semibold" style={{ color: "#065598" }}>Tokopedia</span>
                         </a>
-                        <a href="https://food.grab.com/id/en/restaurant/sekotak-delivery/IDGFSTI00000b2j" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center justify-center p-8 bg-white rounded-2xl shadow-lg border-2 border-[#00b14f] hover:bg-[#00b14f] transition-all duration-300 transform hover:-translate-y-2">
-                            <i className="fas fa-motorcycle text-6xl text-[#00b14f] group-hover:text-white transition-colors duration-300"></i>
-                            <span className="mt-4 text-xl font-bold text-gray-800 group-hover:text-white transition-colors duration-300">GrabFood</span>
+                        <a href="https://food.grab.com/id/en/restaurant/sekotak-delivery/IDGFSTI00000b2j" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center py-6 px-8 bg-white rounded-2xl border-2 hover:bg-gray-50 transition-all duration-300" style={{ borderColor: "#065598" }}>
+                            <span className="text-xl font-semibold" style={{ color: "#065598" }}>GrabFood</span>
                         </a>
-                        <a href="https://shopeefood.co.id/restaurant/sekotak" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center justify-center p-8 bg-white rounded-2xl shadow-lg border-2 border-[#ee4d2d] hover:bg-[#ee4d2d] transition-all duration-300 transform hover:-translate-y-2">
-                            <i className="fas fa-shopping-bag text-6xl text-[#ee4d2d] group-hover:text-white transition-colors duration-300"></i>
-                            <span className="mt-4 text-xl font-bold text-gray-800 group-hover:text-white transition-colors duration-300">ShopeeFood</span>
+                        <a href="https://shopeefood.co.id/restaurant/sekotak" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center py-6 px-8 bg-white rounded-2xl border-2 hover:bg-gray-50 transition-all duration-300" style={{ borderColor: "#065598" }}>
+                            <span className="text-xl font-semibold" style={{ color: "#065598" }}>ShopeeFood</span>
                         </a>
                     </div>
                 </div>
