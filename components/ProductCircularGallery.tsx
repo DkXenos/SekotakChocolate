@@ -38,16 +38,16 @@ export default function ProductCircularGallery({
     node: (
       <div
         key={product.id}
-        className="flex flex-col items-center cursor-pointer transition-transform duration-300"
+        className="flex flex-col items-center justify-center cursor-pointer transition-transform duration-300"
         onClick={() => setSelectedProduct(product)}
       >
         <div
-          className="rounded-[50%/25%] flex items-center justify-center p-6 shadow-lg transition-all duration-300 hover:scale-110"
+          className="rounded-2xl flex items-center justify-center p-6 shadow-lg transition-all duration-300 hover:scale-105"
           style={{
             backgroundColor: product.bgColor,
-            width: "200px",
-            height: "280px",
-            border: "3px solid black",
+            width: "240px",
+            height: "240px",
+            border: "3px solid #065598",
           }}
         >
           <Image
@@ -110,7 +110,7 @@ export default function ProductCircularGallery({
             logos={productLogos}
             speed={60}
             direction="left"
-            logoHeight={320}
+            logoHeight={280}
             gap={60}
             hoverSpeed={10}
             scaleOnHover={false}

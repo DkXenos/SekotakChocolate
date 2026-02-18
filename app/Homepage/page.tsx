@@ -8,6 +8,7 @@ import ScrollFloat from "../../components/ScrollFloat";
 import LoadingScreen from "../../components/LoadingScreen";
 import ProductCircularGallery from "../../components/ProductCircularGallery";
 import GridMotion from "../../components/GridMotion";
+import GradualBlur from "../../components/GradualBlur";
 import { products, Product } from "@/lib/products";
 
 export default function Homepage() {
@@ -59,7 +60,8 @@ export default function Homepage() {
       <div style={{ opacity: isLoading ? 0 : 1, transition: 'opacity 0.3s ease-in' }}>
         {/* Hero Section */}
         <section 
-          className="relative h-screen flex items-center justify-center overflow-hidden bg-white"
+          style={{ position: 'relative', height: '100vh', overflow: 'hidden' }}
+          className="flex items-center justify-center bg-white"
         >
           {/* GridMotion Background */}
           <div className="absolute inset-0 z-0 bg-white">
@@ -107,6 +109,17 @@ export default function Homepage() {
             ></div>
           </div>
         </div>
+
+        <GradualBlur
+          target="page"
+          position="bottom"
+          height="5rem"
+          strength={1}
+          divCount={6}
+          curve="bezier"
+          exponential
+          opacity={1}
+        />
       </section>
 
       {/* Product Showcase Section */}
