@@ -74,7 +74,7 @@ export default function Homepage() {
             height="auto"
             borderRadius={30}
             className="p-10"
-            opacity={0.5}
+            opacity={1}
             blur={40}
             borderWidth={1}
             // slight white tint to ensure contrast if background gets busy

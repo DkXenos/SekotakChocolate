@@ -34,7 +34,7 @@ export default function ProductCircularGallery({
   };
 
   // Create custom render for each product
-  const productLogos = products.map((product, index) => ({
+  const productLogos = products.map((product) => ({
     node: (
       <div
         key={product.id}
