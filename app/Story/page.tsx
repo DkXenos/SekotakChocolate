@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import Particles from "@/components/Particles";
 
 export default function StoryPage() {
   const container = useRef(null);
@@ -44,28 +45,46 @@ export default function StoryPage() {
       className="bg-white text-gray-800 font-sans overflow-x-hidden "
     >
       {/* Hero Section */}
-      <section className="h-screen flex flex-col items-center justify-center text-center bg-[#FFECBA] p-4">
-        <h1 className="text-5xl md:text-7xl font-bold font-serif text-[#065598]">
-          Our Not-So-Secret Story
-        </h1>
-        <p className="mt-6 text-lg md:text-xl max-w-2xl text-gray-700">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-        </p>
-        <div className="mt-12 animate-bounce">
-          <svg
-            className="w-8 h-8 text-[#065598]"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M19 9l-7 7-7-7"
-            ></path>
-          </svg>
+      <section className="h-screen flex flex-col items-center justify-center text-center bg-gray-50 p-4 relative overflow-hidden">
+        {/* Particles Background */}
+        <div className="absolute inset-0 w-full h-full">
+          <Particles
+            particleColors={["#ffffff"]}
+            particleCount={200}
+            particleSpread={10}
+            speed={0.2}
+            particleBaseSize={200}
+            moveParticlesOnHover={false}
+            alphaParticles
+            disableRotation={false}
+            pixelRatio={1}
+          />
+        </div>
+        
+        {/* Content */}
+        <div className="relative z-10">
+          <h1 className="text-5xl md:text-7xl font-bold font-serif text-[#065598]">
+            Our Not-So-Secret Story
+          </h1>
+          <p className="mt-6 text-lg md:text-xl max-w-2xl text-gray-700">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          </p>
+          <div className="mt-12 animate-bounce">
+            <svg
+              className="w-8 h-8 text-[#065598]"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M19 9l-7 7-7-7"
+              ></path>
+            </svg>
+          </div>
         </div>
       </section>
 
